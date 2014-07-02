@@ -29,3 +29,4 @@ Compile using the GNU Compiler Collection (GCC) or CodeBlocks.
 - Make more utility functions
 - Use a linked list to house the entities for faster iteration
 - Make a linked list class for the linked list to house the entities.
+- Fix Tick. (Make it an ACTUAL tick rather than being called when render is) {TICK IS A LIE}
