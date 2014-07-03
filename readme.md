@@ -4,7 +4,7 @@ A work in development, to say the least.
 
 Compile using the GNU Compiler Collection (GCC) or CodeBlocks.
 
-### DLL Dependencies:
+## DLL Dependencies:
 - OpenGL and SDL:
   - glew32.dll
   - SDL2.dll
@@ -20,12 +20,13 @@ Compile using the GNU Compiler Collection (GCC) or CodeBlocks.
 - Is this really a dependency, I'm not sure:
   - zlib1.dll
   
-### Commandlines for compilation:
-## Windows:
+## Commandlines for compilation:
+### Windows:
 	mingw32-make -f *PATH TO MAKEFILE*
-## Linux:
+### Linux:
 	make -f *PATH TO MAKEFILE*
-### TODO (Non-exhaustive list):
+
+## TODO (Non-exhaustive list):
 - Fix the OpenGL renderer to work with images
 - Complete the Direct3D renderer.
 - Improve collision
