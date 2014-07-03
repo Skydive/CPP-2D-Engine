@@ -6,8 +6,11 @@
  */
 
 #include "Vector2.h"
-#include "SDL2\SDL.h"
+
 #include <math.h>
+
+// For M_PI
+#include "SDL2/SDL.h"
 
 // INTEGER TYPE
 Vector2::Vector2()

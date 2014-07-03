@@ -4,7 +4,7 @@
  * why not make a wrapper class to deal with this?
  */
 #pragma once
-#include "SDL2\SDL.h"
+#include "SDL2/SDL.h"
 #include <map>
 
 // For readability purposes. Nasty hack!

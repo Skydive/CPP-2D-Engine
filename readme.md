@@ -20,13 +20,23 @@ Compile using the GNU Compiler Collection (GCC) or CodeBlocks.
 - Is this really a dependency, I'm not sure:
   - zlib1.dll
   
-### Commandline for compilation:
+### Commandlines for compilation:
+## Windows:
 	mingw32-make -f *PATH TO MAKEFILE*
-
+## Linux:
+	make -f *PATH TO MAKEFILE*
 ### TODO (Non-exhaustive list):
-- Fix the OpenGL renderer
+- Fix the OpenGL renderer to work with images
+- Complete the Direct3D renderer.
 - Improve collision
 - Make more utility functions
 - Use a linked list to house the entities for faster iteration
 - Make a linked list class for the linked list to house the entities.
 - Fix Tick. (Make it an ACTUAL tick rather than being called when render is) {TICK IS A LIE}
+- Make some sort of API documentation
+- 64 bit
+- Add launch message + version notify
+- Code Local/World position converters and rename arguments+variables to avoid confusion.
+
+By Khalid Aleem
+(Open source. Do whatever the heck you want with it!)

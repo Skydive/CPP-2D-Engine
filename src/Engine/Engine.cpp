@@ -2,7 +2,8 @@
 
 #include "RendererSDL.h"
 #include "RendererOpenGL.h"
-#include "input.h"
+#include "Input.h"
+
 /// TODO: URGENT. ADD FPS AND DELTATIME!
 // Static Variables
 States Engine::State = States();

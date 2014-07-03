@@ -1,5 +1,4 @@
-// TODO: Rename with capital
-#include "input.h"
+#include "Input.h"
 
 bool Input::mouseInput[NUM_MOUSEBUTTONS];
 bool Input::downMouse[NUM_MOUSEBUTTONS];

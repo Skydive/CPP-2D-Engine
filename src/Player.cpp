@@ -4,8 +4,8 @@
 #include <stdio.h>
 #include <math.h>
 
-#include "Engine\input.h"
-#include "Engine\Engine.h"
+#include "Engine/Input.h"
+#include "Engine/Engine.h"
 
 void Player::Spawn()
 {

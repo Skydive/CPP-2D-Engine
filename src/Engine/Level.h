@@ -1,8 +1,11 @@
 #pragma once
 
 #include <list>
+
+#include "SDL2/SDL.h"
+
 #include "Entity.h"
-#include "SDL2\SDL.h"
+
 
 class Level
 {

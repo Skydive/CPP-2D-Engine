@@ -2,7 +2,7 @@
 #include "Vector2.h"
 #include <string>
 #include <map>
-#include "SDL2\SDL.h"
+#include "SDL2/SDL.h"
 
 class RendererBase
 {
