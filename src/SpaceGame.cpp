@@ -18,7 +18,7 @@ void SpaceGame::Precache()
 
 void SpaceGame::Start()
 {
-	printf("START\n");
+	printf("Space Game Started!\n");
 	CurrentLevel = new SpaceLevel();
 	CurrentLevel->Initialize(Renderer);
 	Super::Start();

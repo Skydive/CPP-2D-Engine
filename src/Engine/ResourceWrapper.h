@@ -26,10 +26,11 @@ public:
 };
 
 // Fake Wrappers
-CreateFakeWrapper(SurfaceWrapper, ResourceWrapper<SDL_Surface*>);
-CreateFakeWrapper(SoundWrapper, ResourceWrapper<void*>);
 
-/*
+//CreateFakeWrapper(TextureWrapper, ResourceWrapper<SDL_Surface*>);
+//CreateFakeWrapper(SoundWrapper, ResourceWrapper<void*>);
+
+/* Old Method:
 #define CreateFakeWrapper(NAME, WRAPPED) class NAME{ public: WRAPPED Data; public: NAME(WRAPPED in){ Data = in; }; };
 CreateFakeWrapper(SurfaceWrapper, SDL_Surface*);
 CreateFakeWrapper(TextureWrapper, SDL_Texture*);

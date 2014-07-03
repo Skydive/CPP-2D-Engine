@@ -5,6 +5,7 @@
 #include "SDL2/SDL_image.h"
 
 #include "ResourceWrapper.h"
+
 CreateFakeWrapper(SDLTextureWrapper, ResourceWrapper<SDL_Texture*>);
 
 class RendererSDL : public RendererBase

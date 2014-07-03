@@ -54,7 +54,7 @@ public:
 	virtual void DefaultProperties();
 
 	// Functions
-
+	virtual void LaunchMessage();
 
 	// Data
 	static States State;

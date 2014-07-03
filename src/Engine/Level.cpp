@@ -59,7 +59,7 @@ Entity* Level::Spawn(Entity* entity, Vector2 pos)
 
 Entity* Level::Spawn(std::string ID, Entity* s, Vector2 pos)
 {
-	printf("SPAWNED: %s\n", ID.c_str());
+	printf("Spawned: %s\n", ID.c_str());
 	s->Renderer = Renderer;
 	Entity::IDCount++;
 	s->ToDelete = false;

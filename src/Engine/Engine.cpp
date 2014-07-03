@@ -1,13 +1,17 @@
-#include "Engine.h"
+#include <stdio.h>
 
+#include "Engine.h"
 #include "RendererSDL.h"
 #include "RendererOpenGL.h"
 #include "Input.h"
+#include "Globals.h"
 
 /// TODO: URGENT. ADD FPS AND DELTATIME!
 // Static Variables
 States Engine::State = States();
 GameProperties Engine::Properties = GameProperties();
+
+Engine::~Engine(){}
 
 void Engine::Start(){}
 void Engine::Tick(){}
@@ -31,6 +35,8 @@ void Engine::BaseEventHandler(SDL_Event &e)
 
 void Engine::Initialize(GameProperties props)
 {
+	this->LaunchMessage();
+
 	State.Paused = false;
 	State.Quit = false;
 	Properties = props;
@@ -112,4 +118,10 @@ void Engine::DefaultProperties()
 
 }
 
-Engine::~Engine(){}
+
+void Engine::LaunchMessage()
+{
+	printf("C++ 2D Engine Launched\n");
+	printf("Version: %s\n", Global::ENGINE_VERSION.c_str());
+	printf("Created By Khalid Aleem\n\n");
+}

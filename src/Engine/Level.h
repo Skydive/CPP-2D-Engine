@@ -24,6 +24,8 @@ public:
 	std::list<Entity*> EntityRepository;
 
 	// Functions
+
+	// Utility Functions
 	Entity* Spawn(std::string name, Entity* entity);
 	Entity* Spawn(Entity* entity);
 	Entity* Spawn(Entity* entity, Vector2 position);

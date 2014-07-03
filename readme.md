@@ -33,10 +33,15 @@ Compile using the GNU Compiler Collection (GCC) or CodeBlocks.
 - Use a linked list to house the entities for faster iteration
 - Make a linked list class for the linked list to house the entities.
 - Fix Tick. (Make it an ACTUAL tick rather than being called when render is) {TICK IS A LIE}
+- Add FPS counter
+- Add GUI support
 - Make some sort of API documentation
 - 64 bit
-- Add launch message + version notify
+- ~~Add launch message + version notify~~
 - Code Local/World position converters and rename arguments+variables to avoid confusion.
+- Add SDL Mixer support
+- Add SDL TTF support
+- Add Linux compatability
 
 By Khalid Aleem
 (Open source. Do whatever the heck you want with it!)

@@ -8,3 +8,6 @@
 - 3-7-14:
   - Fixed filepaths containing '\' by replacing all '\' to '/'
   - Updated SDL from 2.0.1 to 2.0.3
+  - Added launch message. Engine.h -> "virtual void LaunchMessage()"
+  - Added version control Globals.h --> "Global::ENGINE_VERSION" type std::string
+  - Added basic timer class
