@@ -2,6 +2,8 @@
 
 #include "Engine/Input.h"
 
+#include <iostream>
+
 void TestEntity::Render()
 {
 	SDL_Color c = {0, 255, 255};
@@ -61,4 +63,23 @@ void TestEntity::Input()
 	{
 		velocity.x += 5;
 	}
+}
+
+void TestEntity::DefaultProperties()
+{
+	std::cout << "Linked list test from: TestEntity::DefaultProperties" << std::endl;
+
+	LinkedList<int> LinkyLink = LinkedList<int>();
+	LinkyLink.push_back(1);
+	LinkyLink.push_back(100);
+	LinkyLink.push_back(1000);
+	LinkyLink.push_back(10000);
+	LinkyLink.push_front(0);
+	LinkedNode<int>* A = LinkyLink.push_back(5);
+	LinkyLink.set_head(A);
+
+	LinkyLink.iterate([&] (int value)
+	{
+		std::cout << value << std::endl;
+	});
 }

@@ -45,9 +45,13 @@
 		<Unit filename="src/Engine/Engine.h" />
 		<Unit filename="src/Engine/Entity.cpp" />
 		<Unit filename="src/Engine/Entity.h" />
+		<Unit filename="src/Engine/Globals.h" />
 		<Unit filename="src/Engine/Input.cpp" />
+		<Unit filename="src/Engine/Input.h" />
 		<Unit filename="src/Engine/Level.cpp" />
 		<Unit filename="src/Engine/Level.h" />
+		<Unit filename="src/Engine/LinkedList.cpp" />
+		<Unit filename="src/Engine/LinkedList.h" />
 		<Unit filename="src/Engine/RendererBase.cpp" />
 		<Unit filename="src/Engine/RendererBase.h" />
 		<Unit filename="src/Engine/RendererDirect3D.cpp" />
@@ -61,9 +65,10 @@
 		<Unit filename="src/Engine/ResourceWrapper.h" />
 		<Unit filename="src/Engine/Sprite.cpp" />
 		<Unit filename="src/Engine/Sprite.h" />
+		<Unit filename="src/Engine/Timer.cpp" />
+		<Unit filename="src/Engine/Timer.h" />
 		<Unit filename="src/Engine/Vector2.cpp" />
 		<Unit filename="src/Engine/Vector2.h" />
-		<Unit filename="src/Engine/input.h" />
 		<Unit filename="src/Player.cpp" />
 		<Unit filename="src/Player.h" />
 		<Unit filename="src/SpaceGame.cpp" />

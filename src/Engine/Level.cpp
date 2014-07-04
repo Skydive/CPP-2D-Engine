@@ -12,37 +12,37 @@ void Level::Initialize(RendererBase* renderer)
 
 void Level::EventHandler(SDL_Event* e)
 {
-	for(auto iter = EntityRepository.begin(); iter != EntityRepository.end(); iter++)
+	EntityRepository.iterate([&] (Entity* ent)
 	{
-		if((*iter) != nullptr)
+		if(ent != nullptr)
 		{
-			//TODO: Reference or Pointer generalisation
-			(*iter)->EventHandler(*e);
+			ent->EventHandler(*e);
 		}
-	}
+	});
 }
 
 void Level::Render()
 {
-	for(auto iter = EntityRepository.begin(); iter != EntityRepository.end();)
+	EntityRepository.iterate([&] (Entity* ent)
 	{
-		if((*iter) != nullptr)
+		if(ent != nullptr)
 		{
-			(*iter)->Input();
-			(*iter)->Tick();
-			if((*iter)->Renderer != nullptr)
+			ent->Input();
+			ent->Tick();
+			if(ent->Renderer != nullptr)
 			{
-				(*iter)->Render();
+				ent->Render();
 			}
-			if((*iter)->ToDelete)
+			if(ent->ToDelete)
 			{
-				delete (*iter);
-				iter = EntityRepository.erase(iter);
-				continue;
+				delete ent;
+				// TODO: Implement nodes being passed to the iterate method.
+				//iter = EntityRepository.erase(iter);
+				//continue;
+				return;
 			}
 		}
-		iter++;
-	}
+	});
 }
 
 Entity* Level::Spawn(Entity* entity)
@@ -77,6 +77,19 @@ Entity* Level::Spawn(std::string ID, Entity* s, Vector2 pos)
 template<typename LoopF>
 void Level::LoopEntsByID(std::string ID, LoopF &loopFunction)
 {
+	EntityRepository.iterate([&] (Entity* ent)
+	{
+		if(ent != nullptr)
+		{
+			std::string str(ent->ID); std::transform(str.begin(), str.end(), str.begin(), ::tolower);
+			std::string sub(ID); std::transform(sub.begin(), sub.end(), sub.begin(), ::tolower);
+			if(str.find(sub) != std::string::npos)
+			{
+				loopFunction(*ent);
+			}
+		}
+	});
+	/*
 	for(auto iter = EntityRepository.begin(); iter != EntityRepository.end(); iter++)
 	{
 		if(*iter != nullptr)
@@ -89,14 +102,15 @@ void Level::LoopEntsByID(std::string ID, LoopF &loopFunction)
 			}
 		}
 	}
+	*/
 }
 
 void Level::Cleanup()
 {
-	for(auto iter = EntityRepository.begin(); iter != EntityRepository.end(); iter++)
+	EntityRepository.iterate([&] (Entity* ent)
 	{
-		delete (*iter);
-		iter = EntityRepository.erase(iter);
-		(*iter) = nullptr;
-	}
+		delete ent;
+		//iter = EntityRepository.erase(iter);
+		//(*iter) = nullptr;
+	});
 }

@@ -11,3 +11,10 @@
   - Added launch message. Engine.h -> "virtual void LaunchMessage()"
   - Added version control Globals.h --> "Global::ENGINE_VERSION" type std::string
   - Added basic timer class
+ - 4-7-14
+  - Alpha 0.02
+  - Implemented LinkedLists (TODO: Fix deletion, improve and add better iteration)
+  - Changed compilation to C++ 14. (-std=C++1y)
+  - Added a pointless linkedlist example to TestEntity.cpp DefaultProperties
+
+  

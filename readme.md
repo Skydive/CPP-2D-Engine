@@ -1,5 +1,5 @@
 # CPP-2D-Engine
-
+## Current Version: Alpha 0.02
 A work in development, to say the least.
 
 Compile using the GNU Compiler Collection (GCC) or CodeBlocks.
@@ -20,18 +20,19 @@ Compile using the GNU Compiler Collection (GCC) or CodeBlocks.
 - Is this really a dependency, I'm not sure:
   - zlib1.dll
   
-### Commandlines for compilation:
-## Windows:
+## Commandlines for compilation:
+### Windows:
 	mingw32-make -f *PATH TO MAKEFILE*
-## Linux:
+### Linux:
 	make -f *PATH TO MAKEFILE*
+	
 ### TODO (Non-exhaustive list):
 - Fix the OpenGL renderer to work with images
 - Complete the Direct3D renderer.
 - Improve collision
 - Make more utility functions
-- Use a linked list to house the entities for faster iteration
-- Make a linked list class for the linked list to house the entities.
+- ~~Use a linked list to house the entities for faster iteration~~
+- ~~Make a linked list class for the linked list to house the entities.~~
 - Fix Tick. (Make it an ACTUAL tick rather than being called when render is) {TICK IS A LIE}
 - Add FPS counter
 - Add GUI support
@@ -42,6 +43,7 @@ Compile using the GNU Compiler Collection (GCC) or CodeBlocks.
 - Add SDL Mixer support
 - Add SDL TTF support
 - Add Linux compatability
+- Fix deletion, improve and add better iteration to LinkedLists
 
 By Khalid Aleem
 (Open source. Do whatever the heck you want with it!)

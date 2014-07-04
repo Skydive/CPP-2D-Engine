@@ -3,7 +3,7 @@ BASEDIR = $(ROOT_DIR)
 CC = g++
 FILES = $(BASEDIR)/src/*.cpp $(BASEDIR)/src/Engine/*.cpp
 OUT_EXE = CPP-2D-Engine
-CPPVERSION = c++0x
+CPPVERSION = c++1y
 DIRECTORIES = -L $(BASEDIR)/lib -I $(BASEDIR)/include
 ADDDEP = -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lopengl32 -lglu32 -lglew32
 # -ld3d9

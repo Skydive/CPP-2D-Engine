@@ -1,9 +1,8 @@
 #pragma once
 
-#include <list>
-
 #include "SDL2/SDL.h"
 
+#include "LinkedList.h"
 #include "Entity.h"
 
 
@@ -21,7 +20,7 @@ public:
 	// Data
 	RendererBase* Renderer;
 	std::string LevelName;
-	std::list<Entity*> EntityRepository;
+	LinkedList<Entity*> EntityRepository;
 
 	// Functions
 
