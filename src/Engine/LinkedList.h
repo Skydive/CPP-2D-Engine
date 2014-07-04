@@ -1,3 +1,13 @@
+/*
+	Linked List Class:
+	Very clever linked list. (Hell to code)
+	The tail of the list points to the head, visually forming a circle of nodes.
+	This method allows the head pointer to be changed in one line of code excluding the validity check of the node pointer to change the head to
+	I doubt there are any performance differences between this circular linked list and a 'normal' linear linked list.
+	Created on: 4/7/2014
+	By: Khalid Aleem
+*/
+
 #pragma once
 
 #include <iostream>
