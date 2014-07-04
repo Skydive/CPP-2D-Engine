@@ -27,6 +27,10 @@ Compile using the GNU Compiler Collection (GCC) or CodeBlocks.
 	make -f *PATH TO MAKEFILE*
 	
 ### TODO (Non-exhaustive list):
+=======
+
+## TODO (Non-exhaustive list):
+>>>>>>> origin/master
 - Fix the OpenGL renderer to work with images
 - Complete the Direct3D renderer.
 - Improve collision
