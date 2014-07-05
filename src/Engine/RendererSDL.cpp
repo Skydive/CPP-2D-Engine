@@ -68,15 +68,15 @@ void RendererSDL::PrecacheTexture(const std::string& name, const std::string& pa
 	SDL_FreeSurface(surface);
 }
 
-void RendererSDL::RenderImage(const char* textureID, Vector2 position)
+void RendererSDL::RenderImage(const char* textureID, Vector2 worldposition)
 {
-	this->RenderImage(textureID, position, 1.0, 0, SDL_FLIP_NONE);
+	this->RenderImage(textureID, worldposition, 1.0, 0, SDL_FLIP_NONE);
 }
 
-void RendererSDL::RenderImage(const char* textureID, Vector2 position, double scale, double rotation, SDL_RendererFlip flip)
+void RendererSDL::RenderImage(const char* textureID, Vector2 worldposition, double scale, double rotation, SDL_RendererFlip flip)
 {
 	std::string strID = std::string(textureID);
-	Vector2 pos = VectorToRenderVector(position);
+	Vector2 pos = WorldToLocalVector(worldposition);
 	if(TextureRepository.count(strID) > 0
 	&& TextureRepository[strID]->Data == nullptr)
 	{
@@ -88,17 +88,17 @@ void RendererSDL::RenderImage(const char* textureID, Vector2 position, double sc
 	SDL_RenderCopyEx(GameRenderer, TextureRepository[strID]->Data, NULL, &TexDimensions, rotation, NULL, flip);
 }
 
-void RendererSDL::RenderDrawRect(Vector2 position, Vector2 dimensions, SDL_Color color)
+void RendererSDL::RenderDrawRect(Vector2 worldposition, Vector2 dimensions, SDL_Color color)
 {
-	Vector2 pos = VectorToRenderVector(position);
+	Vector2 pos = WorldToLocalVector(worldposition);
 	SDL_Rect rect = {pos.x, pos.y, dimensions.x, dimensions.y};
 	SDL_SetRenderDrawColor(GameRenderer, color.r, color.g, color.b, color.a);
 	SDL_RenderDrawRect(GameRenderer, &rect);
 }
 
-void RendererSDL::RenderFillRect(Vector2 position, Vector2 dimensions, SDL_Color color)
+void RendererSDL::RenderFillRect(Vector2 worldposition, Vector2 dimensions, SDL_Color color)
 {
-	Vector2 pos = VectorToRenderVector(position);
+	Vector2 pos = WorldToLocalVector(worldposition);
 	SDL_Rect rect = {pos.x, pos.y, dimensions.x, dimensions.y};
 	SDL_SetRenderDrawColor(GameRenderer, color.r, color.g, color.b, color.a);
 	SDL_RenderFillRect(GameRenderer, &rect);
@@ -137,14 +137,7 @@ void RendererSDL::Cleanup()
 	TTF_Quit();
 }
 
-Vector2 RendererSDL::VectorToRenderVector(Vector2 in)
-{
-	//TODO: Improve this
-	// Displace coordinates.
-	in.x += RenderView.x;
-	in.y += RenderView.y;
-	return in;
-}
+
 
 bool RendererSDL::TextureExists(const std::string& Texture)
 {
@@ -167,10 +160,10 @@ void RendererSDL::PrecacheFont(const std::string& name, const std::string& path,
 	FontRepository[name]->Extrai["Size"] = fontsize;
 }
 
-void RendererSDL::RenderFont(const std::string& message, const char* fontID, Vector2 position, double rotation, SDL_RendererFlip flip, SDL_Color color)
+void RendererSDL::RenderFont(const std::string& message, const char* fontID, Vector2 worldposition, double rotation, SDL_RendererFlip flip, SDL_Color color)
 {
 	std::string strID = std::string(fontID);
-	Vector2 pos = VectorToRenderVector(position);
+	Vector2 pos = WorldToLocalVector(worldposition);
 
 	if(FontRepository.count(strID) > 0
 	&& FontRepository[strID]->Data == nullptr)
@@ -204,7 +197,7 @@ void RendererSDL::RenderFont(const std::string& message, const char* fontID, Vec
 
 }
 
-void RendererSDL::RenderFont(const std::string& message, const char* fontID, Vector2 position, SDL_Color color)
+void RendererSDL::RenderFont(const std::string& message, const char* fontID, Vector2 worldposition, SDL_Color color)
 {
-	this->RenderFont(message, fontID, position, 0, SDL_RendererFlip::SDL_FLIP_NONE, color);
+	this->RenderFont(message, fontID, worldposition, 0, SDL_RendererFlip::SDL_FLIP_NONE, color);
 }

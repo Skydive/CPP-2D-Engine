@@ -13,7 +13,7 @@
   - Added version control Globals.h --> "Global::ENGINE_VERSION" type std::string
   - Added basic timer class
  - 4-7-14
-  - Alpha 0.02
+  - Version -> Alpha 0.02
   - Implemented LinkedLists (TODO: Fix deletion, improve and add better iteration)
   - Changed compilation to C++ 14. (-std=C++1y)
   - Added a pointless linkedlist example to TestEntity.cpp DefaultProperties
@@ -22,3 +22,8 @@
     - libfreetype-6.dll
 	- SDL2_ttf.dll
   - Added some minor TODOs.
+  - Version -> Alpha 0.03
+  - RendererBase.cpp/RendererBase.h:
+    - Added: Vector2 LocalToWorldVector(Vector2 in)
+    - Added: Vector2 WorldToLocalVector(Vector2 in)
+	- Self-explanatory, really.

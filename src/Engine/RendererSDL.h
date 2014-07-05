@@ -21,22 +21,19 @@ public:
 	void Cleanup() override;
 
 	// Basic Rendering
-	void RenderDrawRect(Vector2 position, Vector2 dimensions, SDL_Color color) override;
-	void RenderFillRect(Vector2 position, Vector2 dimensions, SDL_Color color) override;
+	void RenderDrawRect(Vector2 worldposition, Vector2 dimensions, SDL_Color color) override;
+	void RenderFillRect(Vector2 worldposition, Vector2 dimensions, SDL_Color color) override;
 
 	// Texture Stuff
 	void PrecacheTexture(const std::string& name, const std::string& path) override;
-	void RenderImage(const char* textureID, Vector2 position) override;
-	void RenderImage(const char* textureID, Vector2 position, double scale, double rotation, SDL_RendererFlip flip) override; // TODO: make SDL_RendererFlip my own type?
+	void RenderImage(const char* textureID, Vector2 worldposition) override;
+	void RenderImage(const char* textureID, Vector2 worldposition, double scale, double rotation, SDL_RendererFlip flip) override; // TODO: make SDL_RendererFlip my own type?
 	bool TextureExists(const std::string& Texture) override;
 
 	// Font Stuff
 	void PrecacheFont(const std::string& name, const std::string& path, int fontsize) override;
-	void RenderFont(const std::string& message, const char* fontID, Vector2 position, SDL_Color color) override;
-	void RenderFont(const std::string& message, const char* fontID, Vector2 position, double rotation, SDL_RendererFlip flip, SDL_Color color) override;
-
-	// Vector translation
-	Vector2 VectorToRenderVector(Vector2 in) override;
+	void RenderFont(const std::string& message, const char* fontID, Vector2 worldposition, SDL_Color color) override;
+	void RenderFont(const std::string& message, const char* fontID, Vector2 worldposition, double rotation, SDL_RendererFlip flip, SDL_Color color) override;
 
 public:
 	std::map<std::string, SDLTextureWrapper*> TextureRepository;

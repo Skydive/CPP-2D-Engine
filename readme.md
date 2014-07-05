@@ -33,6 +33,7 @@ Compile using the GNU Compiler Collection (GCC) or CodeBlocks.
 - ~~Use a linked list to house the entities for faster insertion~~ (4-7-2014)
 - ~~Make a linked list class for the linked list to house the entities.~~ (4-7-2014)
 - ~~Add SDL TTF support~~ (5-7-2014)
+- ~~Code Local/World position converters and rename arguments+variables to avoid confusion.~~ (5-7-2014)
 - Fix the OpenGL renderer to work with images
 - Complete the Direct3D renderer.
 - Improve collision
@@ -42,7 +43,11 @@ Compile using the GNU Compiler Collection (GCC) or CodeBlocks.
 - Add GUI support
 - Make some sort of API documentation
 - 64 bit
-- Code Local/World position converters and rename arguments+variables to avoid confusion.
+- Fix the cause of the render jitter when dealing with coordinate translations.
+  - Renderer->SetRenderView(Vector2((-position.x)+(CentrePosition.x-(dimensions.x/2)), (-position.y)+(CentrePosition.y-(dimensions.y/2))));
+  - Might be to do with int->float conversion.
+- Make coordinate render view setting a lot easier.
+- Add a negate operator to -vector2 and -vector2f.
 - Add SDL Mixer support
 - Add Linux compatability
 - Fix deletion, improve and add better iteration to LinkedLists

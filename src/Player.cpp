@@ -21,38 +21,33 @@ void Player::Tick()
 	velocity = velocity * 0.95;
 
 	Vector2 BackgroundDimensions = Renderer->TexSizeRepository["Background"];
-
-	if(position.x <= Renderer->RenderView.x)
+	if(position.x <= 0)
 	{
 		velocity.x *= -1.0f;
 		if(velocity.x < 0)
 			velocity.x = 1.5f;
 	}
-	else if(position.x >= (Renderer->RenderView.x+BackgroundDimensions.x - dimensions.x))
+	else if(position.x >= BackgroundDimensions.x - dimensions.x)
 	{
 		velocity.x *= -1.0f;
 		if(velocity.x > 0)
 			velocity.x = -1.5f;
 	}
-	if(position.y <= Renderer->RenderView.y)
+	if(position.y <= 0)
 	{
 		velocity.y *= -1.0f;
 		if(velocity.y < 0)
 			velocity.y = 1.5f;
 	}
-	else if(position.y >= (Renderer->RenderView.y+BackgroundDimensions.y - dimensions.y))
+	else if(position.y >= BackgroundDimensions.y - dimensions.y)
 	{
 		velocity.y *= -1.0f;
 		if(velocity.y > 0)
 			velocity.y = -1.5f;
 	}
 
-	//position.x += velocity.x;
-	//position.y += velocity.y;
-
-	// Constrain the player in the zone
-	Renderer->RenderView.x -= velocity.x;
-	Renderer->RenderView.y -= velocity.y;
+	position.x += velocity.x;
+	position.y += velocity.y;
 }
 
 void Player::Input()
@@ -69,7 +64,6 @@ void Player::Input()
 		velocity.x -= Acceleration*sin(rotation*M_PI/180);
 		velocity.y += Acceleration*cos(rotation*M_PI/180);
 	}
-
 	if(Input::GetKey(SDL_SCANCODE_A))
 	{
 		rotation -= 3.25;
@@ -82,16 +76,23 @@ void Player::Input()
 
 void Player::Render()
 {
-	// Movement independent to render view
-	Vector2f CentrePosition = position - Renderer->RenderView.ToFloat();
-	Renderer->RenderImage("ToiletMan", CentrePosition.ToInteger(), scale, rotation, flip);
-	Renderer->RenderFont("I am a man", "ArialSmall", CentrePosition.ToInteger()-Vector2(0, 10), {0, 0, 0});
+	Vector2f CentrePosition = Vector2f(Engine::Properties.Width/2, Engine::Properties.Height/2);
+
+	// Make the camera follow the player. (WOW, this is complex. TODO: Make this more simple?)
+	// -position to make the camera render at the players position. CentrePosition and dimensions used to make it centre in the middle of the player.
+	// TODO: add a -Vector2 and -Vector2f operator.
+	Renderer->SetRenderView((Vector2(0, 0)-position)+(CentrePosition-(dimensions/2)));
+
+	Renderer->RenderImage("ToiletMan", position, scale, rotation, flip);
+
+	Renderer->RenderFont("I am a man", "ArialSmall", position-Vector2(0, 10), {0, 0, 0});
 }
 
 
 void Player::DefaultProperties()
 {
-	position = Vector2f(40, 40);
+	Vector2f CentrePosition = Vector2f(Engine::Properties.Width/2, Engine::Properties.Height/2);
+	position = Renderer->LocalToWorldVector(CentrePosition.ToInteger());
 	flip = SDL_FLIP_NONE;
 	rotation = 0;
 	scale = 0.25;

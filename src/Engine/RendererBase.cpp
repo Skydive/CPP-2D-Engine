@@ -2,14 +2,13 @@
 
 void RendererBase::Initialize(){}
 void RendererBase::PrecacheTexture(const std::string& name, const std::string& path){}
-void RendererBase::RenderImage(const char* textureID, Vector2 position){}
-void RendererBase::RenderImage(const char* textureID, Vector2 position, double scale, double rotation, SDL_RendererFlip flip){}
-void RendererBase::RenderDrawRect(Vector2 position, Vector2 dimensions, SDL_Color color){}
-void RendererBase::RenderFillRect(Vector2 position, Vector2 dimensions, SDL_Color color){}
+void RendererBase::RenderImage(const char* textureID, Vector2 worldposition){}
+void RendererBase::RenderImage(const char* textureID, Vector2 worldposition, double scale, double rotation, SDL_RendererFlip flip){}
+void RendererBase::RenderDrawRect(Vector2 worldposition, Vector2 dimensions, SDL_Color color){}
+void RendererBase::RenderFillRect(Vector2 worldposition, Vector2 dimensions, SDL_Color color){}
 void RendererBase::RenderPresent(){}
 void RendererBase::RenderClear(){}
 void RendererBase::Cleanup(){}
-Vector2 RendererBase::VectorToRenderVector(Vector2 in){ return Vector2(0,0); }
 RendererBase::~RendererBase(){}
 
 void RendererBase::SetRenderView(int x, int y)
@@ -27,5 +26,25 @@ bool RendererBase::TextureExists(const std::string& Texture){ return false; }
 
 // Font Stuff
 void RendererBase::PrecacheFont(const std::string& name, const std::string& path, int fontsize){}
-void RendererBase::RenderFont(const std::string& message, const char* fontID, Vector2 position, SDL_Color color){}
-void RendererBase::RenderFont(const std::string& message, const char* fontID, Vector2 position, double rotation, SDL_RendererFlip flip, SDL_Color color){}
+void RendererBase::RenderFont(const std::string& message, const char* fontID, Vector2 worldposition, SDL_Color color){}
+void RendererBase::RenderFont(const std::string& message, const char* fontID, Vector2 worldposition, double rotation, SDL_RendererFlip flip, SDL_Color color){}
+
+
+// Vector Translation
+Vector2 RendererBase::WorldToLocalVector(Vector2 in)
+{
+	//TODO: Improve this
+	// Displace coordinates.
+	in.x += RenderView.x;
+	in.y += RenderView.y;
+	return in;
+}
+
+Vector2 RendererBase::LocalToWorldVector(Vector2 in)
+{
+	//TODO: Improve this
+	// Displace coordinates.
+	in.x -= RenderView.x;
+	in.y -= RenderView.y;
+	return in;
+}
