@@ -53,6 +53,6 @@ Compile using the GNU Compiler Collection (GCC) or CodeBlocks.
 - Fix deletion, improve and add better iteration to LinkedLists
 - Get rid of inconsistencies between char* and std::string, surely the latter is better.
 - Fix font directory finding. Should be local with debugger.
-- Deal with licencing
+- BORING: Deal with licencing
 By Khalid Aleem
 (Open source. Do whatever the heck you want with it!)
