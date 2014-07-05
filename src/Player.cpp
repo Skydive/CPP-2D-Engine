@@ -85,6 +85,7 @@ void Player::Render()
 	// Movement independent to render view
 	Vector2f CentrePosition = position - Renderer->RenderView.ToFloat();
 	Renderer->RenderImage("ToiletMan", CentrePosition.ToInteger(), scale, rotation, flip);
+	Renderer->RenderFont("I am a man", "ArialSmall", CentrePosition.ToInteger()-Vector2(0, 10), {0, 0, 0});
 }
 
 

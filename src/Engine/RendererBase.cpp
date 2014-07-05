@@ -24,3 +24,8 @@ void RendererBase::SetRenderView(Vector2 pos)
 }
 
 bool RendererBase::TextureExists(const std::string& Texture){ return false; }
+
+// Font Stuff
+void RendererBase::PrecacheFont(const std::string& name, const std::string& path, int fontsize){}
+void RendererBase::RenderFont(const std::string& message, const char* fontID, Vector2 position, SDL_Color color){}
+void RendererBase::RenderFont(const std::string& message, const char* fontID, Vector2 position, double rotation, SDL_RendererFlip flip, SDL_Color color){}

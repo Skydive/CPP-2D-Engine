@@ -22,6 +22,7 @@ public:
 	std::map<std::string, int> Extrai;
 	std::map<std::string, double> Extrad;
 	std::map<std::string, long> Extral;
+	std::map<std::string, std::string> Extras;
 	T Data;
 };
 

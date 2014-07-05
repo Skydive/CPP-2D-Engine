@@ -11,8 +11,14 @@
 
 void SpaceGame::Precache()
 {
-	Resources.PrecacheTexture(Renderer, "Background", "./res/Background.png");
-	Resources.PrecacheTexture(Renderer, "ToiletMan", "./res/ToiletMan.png");
+	//TODO: Remove resource manager
+	Renderer->PrecacheTexture("Background", "./res/Background.png");
+	Renderer->PrecacheTexture("ToiletMan", "./res/ToiletMan.png");
+
+	// Why doesn't this work with local directories from the debugger? Hmm.
+	// Just use windows fonts for now.
+	Renderer->PrecacheFont("ArialSmall", "C:/Windows/Fonts/arial.ttf", 15);
+
 	Super::Precache();
 }
 

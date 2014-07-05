@@ -17,3 +17,8 @@
   - Implemented LinkedLists (TODO: Fix deletion, improve and add better iteration)
   - Changed compilation to C++ 14. (-std=C++1y)
   - Added a pointless linkedlist example to TestEntity.cpp DefaultProperties
+- 5-7-14
+  - Added SDL_ttf. (Yay more dependencies)
+    - libfreetype-6.dll
+	- SDL2_ttf.dll
+  - Added some minor TODOs.

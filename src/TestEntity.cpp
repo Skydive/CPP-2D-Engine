@@ -7,7 +7,8 @@
 void TestEntity::Render()
 {
 	SDL_Color c = {0, 255, 255};
-	Renderer->RenderFillRect(position, Vector2(100, 100), c);
+	Renderer->RenderFillRect(position, dimensions, c);
+	Renderer->RenderFont("I am a box", "ArialSmall", position.ToInteger()+Vector2(0, (int)dimensions.y), c);
 }
 
 void TestEntity::Tick()
@@ -82,4 +83,6 @@ void TestEntity::DefaultProperties()
 	{
 		std::cout << value << std::endl;
 	});
+
+	dimensions = Vector2(100, 100);
 }
