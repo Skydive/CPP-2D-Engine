@@ -76,16 +76,16 @@ void Player::Input()
 
 void Player::Render()
 {
-	Vector2f CentrePosition = Vector2f(Engine::Properties.Width/2, Engine::Properties.Height/2);
 
 	// Make the camera follow the player. (WOW, this is complex. TODO: Make this more simple?)
-	// -position to make the camera render at the players position. CentrePosition and dimensions used to make it centre in the middle of the player.
-	// TODO: add a -Vector2 and -Vector2f operator.
-	Renderer->SetRenderView((Vector2(0, 0)-position)+(CentrePosition-(dimensions/2)));
+	// -position to make the camera render at the players position. Dimensions used to make it centre in the middle of the player.
+	// TODO: Fix stutter caused by Vector2 and Vector2f conversion
 
-	Renderer->RenderImage("ToiletMan", position, scale, rotation, flip);
+	Renderer->SetRenderView((-position.ToInteger())-(dimensions/2));
 
-	Renderer->RenderFont("I am a man", "ArialSmall", position-Vector2(0, 10), {0, 0, 0});
+	Renderer->RenderImage("ToiletMan", position.ToInteger(), scale, rotation, flip);
+
+	Renderer->RenderFont("I am a man", "ArialSmall", position.ToInteger()-Vector2(0, 10), {0, 0, 0});
 }
 
 

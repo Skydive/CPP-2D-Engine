@@ -1,5 +1,5 @@
 # CPP-2D-Engine
-## Current Version: Alpha 0.02
+## Current Version: Alpha 0.035
 A work in development, to say the least.
 
 Compile using the GNU Compiler Collection (GCC) or CodeBlocks.
@@ -34,6 +34,8 @@ Compile using the GNU Compiler Collection (GCC) or CodeBlocks.
 - ~~Make a linked list class for the linked list to house the entities.~~ (4-7-2014)
 - ~~Add SDL TTF support~~ (5-7-2014)
 - ~~Code Local/World position converters and rename arguments+variables to avoid confusion.~~ (5-7-2014)
+- ~~Make coordinate render view setting a lot easier.~~ (6-7-2014)
+- ~~ Add a negate operator to -Vector2 and -Vector2f.~~ (6-7-2014)
 - Fix the OpenGL renderer to work with images
 - Complete the Direct3D renderer.
 - Improve collision
@@ -45,9 +47,7 @@ Compile using the GNU Compiler Collection (GCC) or CodeBlocks.
 - 64 bit
 - Fix the cause of the render jitter when dealing with coordinate translations.
   - Renderer->SetRenderView(Vector2((-position.x)+(CentrePosition.x-(dimensions.x/2)), (-position.y)+(CentrePosition.y-(dimensions.y/2))));
-  - Might be to do with int->float conversion.
-- Make coordinate render view setting a lot easier.
-- Add a negate operator to -vector2 and -vector2f.
+  - To do with int->float vector conversion.
 - Add SDL Mixer support
 - Add Linux compatability
 - Fix deletion, improve and add better iteration to LinkedLists

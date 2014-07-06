@@ -15,27 +15,27 @@
 // INTEGER TYPE
 Vector2::Vector2()
 {
-	x = 0;
-	y = 0;
+	this->x = 0;
+	this->y = 0;
 }
 
 Vector2::Vector2(Vector2f in)
 {
-	x = (int)float(in.x + 0.5);
-	y = (int)float(in.y + 0.5);
+	this->x = (int)float(in.x + 0.5);
+	this->y = (int)float(in.y + 0.5);
 }
 
 
 Vector2::Vector2(float x, float y)
 {
-	Vector2::x = int(floor(x)+0.5);
-	Vector2::y = int(floor(y)+0.5);
+	this->x = int(floor(x)+0.5);
+	this->y = int(floor(y)+0.5);
 }
 
 Vector2::Vector2(int x, int y)
 {
-	Vector2::x = x;
- 	Vector2::y = y;
+	this->x = x;
+ 	this->y = y;
 }
 
 float Vector2::Magnitude()
@@ -77,6 +77,10 @@ Vector2 Vector2::operator-(const Vector2& right)
     result.x = x - right.x;
     result.y = y - right.y;
     return result;
+}
+Vector2 Vector2::operator-()
+{
+    return Vector2(0, 0)-(*this);
 }
 
 Vector2 Vector2::operator*(const int& right)
@@ -168,6 +172,10 @@ Vector2f Vector2f::operator-(const Vector2f& right)
     result.x = x - right.x;
     result.y = y - right.y;
     return result;
+}
+Vector2f Vector2f::operator-()
+{
+    return Vector2f(0.f, 0.f)-(*this);;
 }
 
 Vector2f Vector2f::operator*(const float& right)

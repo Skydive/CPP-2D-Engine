@@ -21,6 +21,7 @@ public:
 public:
 	Vector2 operator+(const Vector2& right);
 	Vector2 operator-(const Vector2& right);
+	Vector2 operator-();
 	Vector2 operator*(const int& right);
 	bool operator==(const Vector2& right);
 
@@ -43,6 +44,7 @@ public:
 public:
 	Vector2f operator+(const Vector2f& right);
 	Vector2f operator-(const Vector2f& right);
+	Vector2f operator-();
 	Vector2f operator*(const float& right);
 	Vector2f operator/(const float& right);
 	bool operator==(const Vector2f& right);

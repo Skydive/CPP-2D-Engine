@@ -1,4 +1,6 @@
 #include "RendererBase.h"
+#include "Engine.h"
+#include <math.h>
 
 void RendererBase::Initialize(){}
 void RendererBase::PrecacheTexture(const std::string& name, const std::string& path){}
@@ -35,8 +37,8 @@ Vector2 RendererBase::WorldToLocalVector(Vector2 in)
 {
 	//TODO: Improve this
 	// Displace coordinates.
-	in.x += RenderView.x;
-	in.y += RenderView.y;
+	in.x += floor(RenderView.x+(Engine::Properties.Width/2));
+	in.y += floor(RenderView.y+(Engine::Properties.Height/2));
 	return in;
 }
 
@@ -44,7 +46,7 @@ Vector2 RendererBase::LocalToWorldVector(Vector2 in)
 {
 	//TODO: Improve this
 	// Displace coordinates.
-	in.x -= RenderView.x;
-	in.y -= RenderView.y;
+	in.x -= floor(RenderView.x+(Engine::Properties.Width/2));
+	in.y -= floor(RenderView.y+(Engine::Properties.Height/2));
 	return in;
 }

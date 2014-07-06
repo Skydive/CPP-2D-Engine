@@ -27,3 +27,8 @@
     - Added: Vector2 LocalToWorldVector(Vector2 in)
     - Added: Vector2 WorldToLocalVector(Vector2 in)
 	- Self-explanatory, really.
+- 6-7-14
+  - Version -> Alpha 0.035
+  - Made SetRenderView(int x, int y); set the view at the CENTRE of the screen
+  - Added -Vector2 and -Vector2f operators.
+  - Found the cause of the jitter. Remember to use .ToInteger() with Vectors. Vector -> FloatVector conversions need to be improved.
