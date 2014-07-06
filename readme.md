@@ -19,7 +19,7 @@ Compile using the GNU Compiler Collection (GCC) or CodeBlocks.
 - Weird GCC Dependencies:
   - libgcc_s_dw2-1.dll
   - libstdc++-6.dll
-- Is this really a dependency, I'm not sure:
+- Other:
   - zlib1.dll
   
 ## Commandlines for compilation:
