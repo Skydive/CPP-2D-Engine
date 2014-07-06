@@ -35,7 +35,7 @@ Compile using the GNU Compiler Collection (GCC) or CodeBlocks.
 - ~~Add SDL TTF support~~ (5-7-2014)
 - ~~Code Local/World position converters and rename arguments+variables to avoid confusion.~~ (5-7-2014)
 - ~~Make coordinate render view setting a lot easier.~~ (6-7-2014)
-- ~~ Add a negate operator to -Vector2 and -Vector2f.~~ (6-7-2014)
+- ~~Add a negate operator to -Vector2 and -Vector2f.~~ (6-7-2014)
 - Fix the OpenGL renderer to work with images
 - Complete the Direct3D renderer.
 - Improve collision
