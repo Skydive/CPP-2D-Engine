@@ -47,11 +47,11 @@ Vector2f Vector2::Normalize()
 {
     float magnitude = Magnitude();
     if (magnitude == 0.0f)
-        magnitude = 0.000001f;
+        return Vector2(0, 0);
 
-	Vector2f result;
-    result.x = x; result.x /= magnitude;
-	result.y = y; result.y /= magnitude;
+    Vector2f result;
+    result.x = x / magnitude;
+    result.y = y / magnitude;
     return result;
 }
 
