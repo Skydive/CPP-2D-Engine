@@ -17,9 +17,9 @@ int G(void *ptr)
 	return 0;
 }
 
-int main( int argc, char* args[] )
+int main(int argc, char* argv[])
 {
-	SDL_Thread* gameThread = SDL_CreateThread(G, "GameThread", NULL);
+	SDL_Thread* gameThread = SDL_CreateThread(G, "GameThread", argv[0]);
 	SDL_WaitThread(gameThread, NULL);
 	//system("PAUSE");
 

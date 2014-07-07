@@ -32,3 +32,8 @@
   - Made SetRenderView(int x, int y); set the view at the CENTRE of the screen
   - Added -Vector2 and -Vector2f operators.
   - Found the cause of the jitter. Remember to use .ToInteger() with Vectors. Vector -> FloatVector conversions need to be improved.
+- 7-7-14
+  - Version -> Alpha 0.04
+  - Implemented SDL_mixer (badly?)
+  - Fixed font directory finding by making it use a base directory of the executable folder. (Only works in windows) (Bye bye multiple OS support for a while.)
+  

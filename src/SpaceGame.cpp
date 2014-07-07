@@ -9,21 +9,20 @@
 #include "SpaceGame.h"
 #include "SpaceLevel.h"
 
+
 void SpaceGame::Precache()
 {
-	//TODO: Remove resource manager
-	Renderer->PrecacheTexture("Background", "./res/Background.png");
-	Renderer->PrecacheTexture("ToiletMan", "./res/ToiletMan.png");
-
-	// Why doesn't this work with local directories from the debugger? Hmm.
-	// Just use windows fonts for now.
-	Renderer->PrecacheFont("ArialSmall", "C:/Windows/Fonts/arial.ttf", 15);
-
+	Renderer->PrecacheTexture("Background", "/res/Background.png");
+	Renderer->PrecacheTexture("ToiletMan", "/res/ToiletMan.png");
+	Renderer->PrecacheFont("ArialSmall", "/res/arial.ttf", 15);
+	Renderer->PrecacheMusic("FeintTowerOfHeaven", "/res/FormatFactoryFeint - Tower Of Heaven.mp3");
+	Renderer->PrecacheSound("Thump","/res/Bounce.wav");
 	Super::Precache();
 }
 
 void SpaceGame::Start()
 {
+	Renderer->PlayMusic("FeintTowerOfHeaven");
 	printf("Space Game Started!\n");
 	CurrentLevel = new SpaceLevel();
 	CurrentLevel->Initialize(Renderer);
@@ -57,6 +56,7 @@ void SpaceGame::GameLoop()
 
 void SpaceGame::Cleanup()
 {
+	Renderer->StopMusic();
 	Super::Cleanup();
 }
 

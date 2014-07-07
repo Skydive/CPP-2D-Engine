@@ -26,28 +26,40 @@ void Player::Tick()
 		velocity.x *= -1.0f;
 		if(velocity.x < 0)
 			velocity.x = 1.5f;
+		OnCollision();
 	}
 	else if(position.x >= BackgroundDimensions.x - dimensions.x)
 	{
 		velocity.x *= -1.0f;
 		if(velocity.x > 0)
 			velocity.x = -1.5f;
+		OnCollision();
 	}
 	if(position.y <= 0)
 	{
 		velocity.y *= -1.0f;
 		if(velocity.y < 0)
 			velocity.y = 1.5f;
+		OnCollision();
 	}
 	else if(position.y >= BackgroundDimensions.y - dimensions.y)
 	{
 		velocity.y *= -1.0f;
 		if(velocity.y > 0)
 			velocity.y = -1.5f;
+		OnCollision();
 	}
+
 
 	position.x += velocity.x;
 	position.y += velocity.y;
+}
+
+void Player::OnCollision()
+{
+	if(Renderer->IsMusicPlaying())
+		Renderer->StopMusic();
+	Renderer->PlaySound("Thump", -1, 0);
 }
 
 void Player::Input()

@@ -1,4 +1,8 @@
 #include <stdio.h>
+#include <algorithm>
+
+//TODO: Platform independent basepath location.
+#include <windows.h>
 
 #include "Engine.h"
 #include "RendererSDL.h"
@@ -10,6 +14,7 @@
 // Static Variables
 States Engine::State = States();
 GameProperties Engine::Properties = GameProperties();
+std::string Engine::BasePath = std::string();
 
 Engine::~Engine(){}
 
@@ -35,13 +40,21 @@ void Engine::BaseEventHandler(SDL_Event &e)
 
 void Engine::Initialize(GameProperties props)
 {
+	// Store the base path. (Eww. Windows API calls)
+	using namespace std;
+	char buffer[MAX_PATH];
+    GetModuleFileName( NULL, buffer, MAX_PATH );
+    string::size_type pos = string( buffer ).find_last_of( "\\/" );
+    string path = string( buffer ).substr( 0, pos);
+    replace( path.begin(), path.end(), '\\', '/');
+	Engine::BasePath = path;
+
 	this->LaunchMessage();
 
 	State.Paused = false;
 	State.Quit = false;
 	Properties = props;
 
-	Resources = ResourceManager();
 	Renderer = new RendererSDL();
 	//Renderer = new RendererOpenGL();
 

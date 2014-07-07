@@ -2,14 +2,9 @@
 #include <string>
 #include <stdio.h>
 
-/// BOSS
-// TODO: FIX THIS MESS
-
-#include "SDL2/SDL.h"
-
 #include "Level.h"
-#include "ResourceManager.h"
 #include "RendererBase.h"
+
 
 // Struct to hold the desired size of the window, e.t.c.
 struct GameProperties
@@ -36,7 +31,6 @@ public:
 	virtual ~Engine();
 
 	// Component Variables
-	ResourceManager Resources;
 	RendererBase* Renderer;
 
 	// Base Functions
@@ -59,7 +53,7 @@ public:
 	// Data
 	static States State;
 	static GameProperties Properties;
-
+	static std::string BasePath;
 	// Game
 	Level* CurrentLevel;
 };

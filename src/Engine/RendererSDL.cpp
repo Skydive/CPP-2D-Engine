@@ -7,6 +7,8 @@
 
 void RendererSDL::Initialize()
 {
+	Super::Initialize();
+
 	RenderView = Vector2(0, 0);
 	int imgFlags = IMG_INIT_PNG | IMG_INIT_JPG;
 	if( !( IMG_Init( imgFlags ) & imgFlags ) )
@@ -43,7 +45,7 @@ void RendererSDL::Initialize()
 
 void RendererSDL::PrecacheTexture(const std::string& name, const std::string& path)
 {
-	SDL_Surface* surface = IMG_Load(path.c_str());
+	SDL_Surface* surface = IMG_Load((Engine::BasePath+path).c_str());
 	if (surface == nullptr)
 	{
 		printf("Texture precache Fail: %s -> %s", name.c_str(), SDL_GetError());
@@ -62,6 +64,7 @@ void RendererSDL::PrecacheTexture(const std::string& name, const std::string& pa
 	int texWidth, texHeight;
 	TextureRepository[name] = new SDLTextureWrapper(texture);
 	SDL_QueryTexture(TextureRepository[name]->Data, NULL, NULL, &texWidth, &texHeight);
+	TextureRepository[name]->Extras["Path"] = path;
 	TextureRepository[name]->Extrai["Width"] = texWidth;
 	TextureRepository[name]->Extrai["Height"] = texHeight;
 	TexSizeRepository[name] = Vector2(texWidth, texHeight);
@@ -135,6 +138,7 @@ void RendererSDL::Cleanup()
 	SDL_DestroyWindow(GameWindow);
 	IMG_Quit();
 	TTF_Quit();
+	Super::Cleanup();
 }
 
 
@@ -147,7 +151,7 @@ bool RendererSDL::TextureExists(const std::string& Texture)
 // SDL_ttf
 void RendererSDL::PrecacheFont(const std::string& name, const std::string& path, int fontsize)
 {
-	TTF_Font *font = TTF_OpenFont(path.c_str(), fontsize);
+	TTF_Font *font = TTF_OpenFont((Engine::BasePath+path).c_str(), fontsize);
 	if(font == nullptr)
 	{
 		printf("Font precache fail: %s -> %s", name.c_str(), SDL_GetError());

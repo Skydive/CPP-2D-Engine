@@ -60,8 +60,6 @@
 		<Unit filename="src/Engine/RendererOpenGL.h" />
 		<Unit filename="src/Engine/RendererSDL.cpp" />
 		<Unit filename="src/Engine/RendererSDL.h" />
-		<Unit filename="src/Engine/ResourceManager.cpp" />
-		<Unit filename="src/Engine/ResourceManager.h" />
 		<Unit filename="src/Engine/ResourceWrapper.h" />
 		<Unit filename="src/Engine/Sprite.cpp" />
 		<Unit filename="src/Engine/Sprite.h" />
