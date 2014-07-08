@@ -36,4 +36,5 @@
   - Version -> Alpha 0.04
   - Implemented SDL_mixer (badly?)
   - Fixed font directory finding by making it use a base directory of the executable folder. (Only works in windows) (Bye bye multiple OS support for a while.)
-  
+- 8-7-14
+  - Fixed vector magnitude functions. (Thanks Coi!)
