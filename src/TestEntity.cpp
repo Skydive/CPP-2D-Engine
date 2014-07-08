@@ -18,6 +18,7 @@ void TestEntity::Tick()
 	Vector2 BackgroundDimensions = Renderer->TexSizeRepository["Background"];
 	if(position.x <= 0)
 	{
+		Delete();
 		velocity.x *= -1.0f;
 		if(velocity.x < 0)
 			velocity.x = 1.5f;
@@ -79,7 +80,7 @@ void TestEntity::DefaultProperties()
 	LinkedNode<int>* A = LinkyLink.push_back(5);
 	LinkyLink.set_head(A);
 
-	LinkyLink.iterate([&] (int value)
+	LinkyLink.iterate([&] (LinkedNode<int>* node, int value)
 	{
 		std::cout << value << std::endl;
 	});

@@ -10,7 +10,14 @@ void SpaceLevel::Initialize(RendererBase* r)
 {
 	Super::Initialize(r);
 	Spawn("Player", new Player(), Vector2(0, 0));
-	Spawn("TestEntity", new TestEntity(), Vector2(200, 200));
+	for(int i=1; i<Renderer->TexSizeRepository["Background"].x; i+=100)
+	{
+		Spawn("TestEntity", new TestEntity(), Vector2(i, 200));
+	}
+
+
+
+
 }
 
 void SpaceLevel::Render()

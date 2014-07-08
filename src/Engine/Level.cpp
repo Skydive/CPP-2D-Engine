@@ -12,7 +12,7 @@ void Level::Initialize(RendererBase* renderer)
 
 void Level::EventHandler(SDL_Event* e)
 {
-	EntityRepository.iterate([&] (Entity* ent)
+	EntityRepository.iterate([&] (LinkedNode<Entity*>* node, Entity* ent)
 	{
 		if(ent != nullptr)
 		{
@@ -23,7 +23,7 @@ void Level::EventHandler(SDL_Event* e)
 
 void Level::Render()
 {
-	EntityRepository.iterate([&] (Entity* ent)
+	EntityRepository.iterate([&] (LinkedNode<Entity*>* node, Entity* ent)
 	{
 		if(ent != nullptr)
 		{
@@ -35,10 +35,13 @@ void Level::Render()
 			}
 			if(ent->ToDelete)
 			{
+				printf("Deleted: %s N: %i\n", ent->ID.c_str(), ent->IDCount);
 				delete ent;
-				// TODO: Implement nodes being passed to the iterate method.
-				//iter = EntityRepository.erase(iter);
-				//continue;
+				node->x = nullptr;
+				EntityRepository.remove(node);
+				node = nullptr;
+				// Horrible function based iteration system needs to be fixed.
+				// This actually means continue, if this was a loop.
 				return;
 			}
 		}
@@ -77,7 +80,7 @@ Entity* Level::Spawn(std::string ID, Entity* s, Vector2 pos)
 template<typename LoopF>
 void Level::LoopEntsByID(std::string ID, LoopF &loopFunction)
 {
-	EntityRepository.iterate([&] (Entity* ent)
+	EntityRepository.iterate([&] (LinkedNode<Entity*>* node, Entity* ent)
 	{
 		if(ent != nullptr)
 		{
@@ -107,10 +110,10 @@ void Level::LoopEntsByID(std::string ID, LoopF &loopFunction)
 
 void Level::Cleanup()
 {
-	EntityRepository.iterate([&] (Entity* ent)
+	EntityRepository.iterate([&] (LinkedNode<Entity*>* node, Entity* ent)
 	{
 		delete ent;
-		//iter = EntityRepository.erase(iter);
-		//(*iter) = nullptr;
+		EntityRepository.remove(node);
+		node = nullptr;
 	});
 }

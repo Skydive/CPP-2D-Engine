@@ -1,5 +1,5 @@
 # CPP-2D-Engine
-## Current Version: Alpha 0.035
+## Current Version: Alpha 0.045
 A work in development, to say the least.
 
 Compile using the GNU Compiler Collection (GCC) or CodeBlocks.
@@ -45,6 +45,7 @@ Compile using the GNU Compiler Collection (GCC) or CodeBlocks.
 - ~~Add a negate operator to -Vector2 and -Vector2f.~~ (6-7-2014)
 - ~~Fix font directory finding. Should be local with debugger.~~ (7-7-2014)
 - ~~Add SDL Mixer support~~ (7-7-2014)
+- ~~Fixed LinkedList deletion~~ (8-7-2014)
 - Fix the OpenGL renderer to work with images
 - Complete the Direct3D renderer.
 - Improve collision
@@ -56,17 +57,20 @@ Compile using the GNU Compiler Collection (GCC) or CodeBlocks.
 - 64 bit
 - Fix the cause of the render jitter when dealing with coordinate translations to do with int->float vector conversion.
 - Add SDL Mixer support
-- Add Linux compatability
-- Fix deletion, improve and add better iteration to LinkedLists
+- Add Linux compatibility
+- Improve and add better iteration to LinkedLists
 - Get rid of inconsistencies between char* and std::string, surely the latter is better.
 - Implement pausing
 - Move SDL_mixer stuff OUT of RendererSDL.
-  - Seperate precaching of files and to texture conversion. (Add a BETTER resource manager which is linked to the renderer).
+- Separate precaching of files and to texture conversion. (Add a BETTER resource manager which is linked to the renderer).
 - MP3s with SDL Mixer MUST be of a bitrate of 256kbps and 44100Hz sample rate. (Fix this, perhaps?)
-- BORING: Deal with licencing
+- Properly implement Entity:IDCount
+- Create a method to generate this, and the readme easily and effectively. (Python for a script perhaps?) 
+  -- This job doesn't deserve to be done by a good programming language due to effort.
+- BORING: Deal with licensing
 By Khalid Aleem
 (Open source. Do whatever the heck you want with it!)
-(Some licencing restrictions may apply. I don't know what they are. [See bottom of TODO list])
+(Some licensing restrictions may apply. I don't know what they are. [See bottom of TODO list])
 
 
 

@@ -3,5 +3,5 @@
 
 namespace Global
 {
-	const std::string ENGINE_VERSION = "Alpha 0.04";
+	const std::string ENGINE_VERSION = "Alpha 0.045";
 };

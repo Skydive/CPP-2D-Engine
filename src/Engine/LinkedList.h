@@ -121,7 +121,7 @@ void LinkedList<T>::set_head(LinkedNode<T>* node)
 {
 	LinkedNode<T>* conductor = h_node;
 	int i=0;
-	while ( conductor->next != node )
+	while ( conductor->next != node || conductor->next != h_node)
 	{
 		conductor = conductor->next;
 
@@ -144,7 +144,7 @@ void LinkedList<T>::remove(LinkedNode<T>* node)
 	LinkedNode<T>* conductor = h_node;
 	LinkedNode<T>* prev_node;
 	int i=0;
-	while ( conductor->next != node )
+	while ( conductor->next != node || conductor->next != h_node)
 	{
 		prev_node = conductor;
 		conductor = conductor->next;
@@ -152,6 +152,10 @@ void LinkedList<T>::remove(LinkedNode<T>* node)
 		if(i > length)
 			return;
 		i++;
+	}
+	if(conductor->next == h_node)
+	{
+		return;
 	}
 	// TODO: Why do an extra next. Why on earth does this work!?
 	prev_node->next->next = conductor->next->next;
@@ -169,10 +173,10 @@ void LinkedList<T>::iterate(IterF iterfunction)
 {
 	LinkedNode<T>* conductor = h_node;
 
-	iterfunction(h_node->x);
+	iterfunction(h_node, h_node->x);
 	while ( conductor->next != h_node )
 	{
-		iterfunction(conductor->next->x);
+		iterfunction(conductor->next, conductor->next->x);
 		conductor = conductor->next;
 	}
 }

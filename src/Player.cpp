@@ -89,10 +89,10 @@ void Player::Input()
 void Player::Render()
 {
 
-	// Make the camera follow the player. (WOW, this is complex. TODO: Make this more simple?)
+	// Make the camera follow the player.
 	// -position to make the camera render at the players position. Dimensions used to make it centre in the middle of the player.
 	// TODO: Fix stutter caused by Vector2 and Vector2f conversion
-
+	// Why is it -position. TODO: Resolve this.
 	Renderer->SetRenderView((-position.ToInteger())-(dimensions/2));
 
 	Renderer->RenderImage("ToiletMan", position.ToInteger(), scale, rotation, flip);
