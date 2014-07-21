@@ -41,6 +41,6 @@
   - Fixed LinkedList deletion!
 - 9-7-14 / 10-7-14
   - Version -> Alpha 0.05
-  - Added readme generation (needs to be improved though TODOs in code) (23:59)
+  - Added readme generation (python3) (23:59)
   - Moved SDL_mixer out of RendererBase class. (0:30)
   - Added lots of TODOS (1:05)
