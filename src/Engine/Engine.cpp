@@ -127,7 +127,6 @@ void Engine::Cleanup()
 		CurrentLevel->Cleanup();
 	}
 	Renderer->Cleanup();
-	SoundController->Cleanup();
 
 	delete Renderer;
 	delete SoundController;

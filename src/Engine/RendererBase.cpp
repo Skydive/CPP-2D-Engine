@@ -2,9 +2,6 @@
 #include "Engine.h"
 #include <math.h>
 
-// Temporary
-
-
 void RendererBase::Initialize(){}
 void RendererBase::PrecacheTexture(const std::string& name, const std::string& path){}
 void RendererBase::RenderImage(const char* textureID, Vector2 worldposition){}
@@ -16,15 +13,18 @@ void RendererBase::RenderClear(){}
 void RendererBase::Cleanup(){}
 RendererBase::~RendererBase(){}
 
+
+///TODO: Clean this
 void RendererBase::SetRenderView(int x, int y)
 {
-	this->RenderView.x = x;
-	this->RenderView.y = y;
+	this->RenderView.x = -x;
+	this->RenderView.y = -y;
 }
 
 void RendererBase::SetRenderView(Vector2 pos)
 {
-	this->SetRenderView(pos.x, pos.y);
+	this->RenderView.x = -pos.x;
+	this->RenderView.y = -pos.y;
 }
 
 bool RendererBase::TextureExists(const std::string& Texture){ return false; }

@@ -1,6 +1,8 @@
 #include "Sprite.h"
 #include "RendererSDL.h"
 
+#include <stdio.h>
+
 bool BoxCollision(const SDL_Rect& A, const SDL_Rect& B)
 {
     //The sides of the rectangles
@@ -47,9 +49,7 @@ bool BoxCollision(const SDL_Rect& A, const SDL_Rect& B)
 
 void Sprite::Initialize()
 {
-	// Set the Pre-Default properties. Haha!
-	Texture = "NULL";
-	TexturePath = "NULL";
+	GenerateTexture();
 	Super::Initialize();
 }
 
@@ -59,21 +59,24 @@ void Sprite::GenerateTexture()
 	&& Texture != "NULL"
 	&& TexturePath != "NULL")
 	{
+		printf("Test: %s %s\n", Texture.c_str(), TexturePath.c_str());
 		Renderer->PrecacheTexture(Texture, TexturePath);
+		dimensions = Renderer->TexSizeRepository["ToiletMan"].ToFloat()*scale;
 	}
 }
 
 void Sprite::Render()
 {
-	GenerateTexture();
 	dimensions.x = Renderer->TexSizeRepository[Texture].x*scale;
 	dimensions.y = Renderer->TexSizeRepository[Texture].y*scale;
-	Renderer->RenderImage(Texture.c_str(), position, scale, rotation, flip);
+
+	///TODO: Fix Vector Conversion
+	Renderer->RenderImage(Texture.c_str(), position.ToInteger()-Vector2(dimensions/2), scale, rotation, flip);
 	Super::Render();
 }
 
 // Very long collision function.
-// TODO: Shorten or Clean Collision Perhaps. Use an external handler?
+/// TODO: Shorten or Clean Collision Perhaps. Use an external handler?
 bool Sprite::IsColliding(Entity* collider)
 {
 	if(Renderer != nullptr)
@@ -85,7 +88,7 @@ bool Sprite::IsColliding(Entity* collider)
 
 bool Sprite::SDLCollision(Entity* collider)
 {
-	// TODO: Implement Box/Sphere AND per pixel collision detection.
+	/// TODO: Implement Box/Sphere AND per pixel collision detection.
 	//RendererSDL* SDLRenderer = dynamic_cast<RendererSDL*>(Renderer);
 
 	// Sprite/Sprite collision check (Per Pixel) YOLO!
@@ -117,4 +120,11 @@ bool Sprite::SDLCollision(Entity* collider)
 	}
 	// Didn't collide.
 	return false;
+}
+
+void Sprite::DefaultProperties()
+{
+	Super::DefaultProperties();
+	Texture = "NULL";
+	TexturePath = "NULL";
 }

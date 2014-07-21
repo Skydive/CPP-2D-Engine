@@ -39,8 +39,12 @@
   - Version -> Alpha 0.045
   - Fixed vector magnitude functions. (Thanks Coi!)
   - Fixed LinkedList deletion!
-- 9-7-14 / 10-7-14
+- 20-7-14 / 21-7-14
   - Version -> Alpha 0.05
   - Added readme generation (python3) (23:59)
   - Moved SDL_mixer out of RendererBase class. (0:30)
   - Added lots of TODOS (1:05)
+- 21-7-14
+  - Version -> Alpha 0.055
+  - Fixed RenderView function. It is a lot easier to work with now.
+  - Gave Sprite class a purpose. (Already supports textures)

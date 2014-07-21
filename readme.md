@@ -1,5 +1,5 @@
 # CPP-2D-Engine
-## Current Version: Alpha 0.05
+## Current Version: Alpha 0.055
 A work in development, to say the least.
 
 Compile using the GNU Compiler Collection (GCC) or CodeBlocks.
@@ -49,6 +49,7 @@ Compile using the GNU Compiler Collection (GCC) or CodeBlocks.
   - LinkedList.h: Create proper iteration in contrast to lambda functions.
   - LinkedList.h: i>length check should not be necessary? (But apparently it is)
   - LinkedList.h: Figure out why an extra ->next is required.
+  - RendererBase.cpp: Clean this
   - RendererBase.cpp: Improve this
   - RendererBase.cpp: Improve this
   - RendererDirect3D.cpp: Complete the Direct3D renderer.
@@ -57,11 +58,11 @@ Compile using the GNU Compiler Collection (GCC) or CodeBlocks.
   - SoundManager.cpp: Implement an entire resource manager which encapsulated the soundmanager and renderer.
   - SoundManager.cpp: MP3s with SDL Mixer MUST be of a bitrate of 256kbps and 44100Hz sample rate. (Fix this is possible?)
   - SoundManager.cpp: Add validation to PlaySound()
+  - Sprite.cpp: Fix Vector Conversion
   - Sprite.cpp: Shorten or Clean Collision Perhaps. Use an external handler?
   - Sprite.cpp: Implement Box/Sphere AND per pixel collision detection.
-  - Sprite.h: Implement this in a useful way
 - Game (Minor and virtually pointless:
-  - Player.cpp: Fix stutter caused by Vector2 and Vector2f conversion
+  - Player.cpp: Rotary collisions
   - Player.cpp: Resolve -position issue.
 
 
@@ -106,8 +107,12 @@ Compile using the GNU Compiler Collection (GCC) or CodeBlocks.
   - Version -> Alpha 0.045
   - Fixed vector magnitude functions. (Thanks Coi!)
   - Fixed LinkedList deletion!
-- 9-7-14 / 10-7-14
+- 20-7-14 / 21-7-14
   - Version -> Alpha 0.05
   - Added readme generation (python3) (23:59)
   - Moved SDL_mixer out of RendererBase class. (0:30)
   - Added lots of TODOS (1:05)
+- 21-7-14
+  - Version -> Alpha 0.055
+  - Fixed RenderView function. It is a lot easier to work with now.
+  - Gave Sprite class a purpose. (Already supports textures)

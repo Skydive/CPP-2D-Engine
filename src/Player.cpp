@@ -5,13 +5,18 @@
 #include "Engine/Input.h"
 #include "Engine/Engine.h"
 
+///TODO: Rotary collisions
+
 void Player::Spawn()
 {
-	dimensions = Renderer->TexSizeRepository["ToiletMan"].ToFloat()*scale;
-
 	// Move to centre
 	position.x = (int)floor((Engine::Properties.Width/2)-(dimensions.x/2));
 	position.y = (int)floor((Engine::Properties.Height/2)-(dimensions.y/2));
+}
+
+void Player::Initialize()
+{
+	Super::Initialize();
 }
 
 void Player::Tick()
@@ -86,14 +91,10 @@ void Player::Input()
 
 void Player::Render()
 {
-
-	// Make the camera follow the player.
-	// -position to make the camera render at the players position. Dimensions used to make it centre in the middle of the player.
-	/// TODO: Fix stutter caused by Vector2 and Vector2f conversion
 	/// TODO: Resolve -position issue.
-	Renderer->SetRenderView((-position.ToInteger())-(dimensions/2));
+	Renderer->SetRenderView(position);
 
-	Renderer->RenderImage("ToiletMan", position.ToInteger(), scale, rotation, flip);
+	Super::Render();
 
 	Renderer->RenderFont("I am a man", "ArialSmall", position.ToInteger()-Vector2(0, 10), {0, 0, 0});
 }
@@ -101,11 +102,19 @@ void Player::Render()
 
 void Player::DefaultProperties()
 {
+	Super::DefaultProperties();
 	Vector2f CentrePosition = Vector2f(Engine::Properties.Width/2, Engine::Properties.Height/2);
 	position = Renderer->LocalToWorldVector(CentrePosition.ToInteger());
+
+	velocity = Vector2f(0, 0);
+
+
+
+
+	Texture = "ToiletMan";
+	TexturePath = "/res/ToiletMan.png";
+	dimensions = Vector2f(40, 40);
 	flip = SDL_FLIP_NONE;
 	rotation = 0;
 	scale = 0.25;
-	velocity = Vector2f(0, 0);
-	dimensions = Vector2f(40, 40);
 }

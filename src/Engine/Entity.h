@@ -25,12 +25,8 @@ public:
 
 	virtual ~Entity();
 
-	// Entity
 	Vector2f position;
 	Vector2f dimensions;
-	double scale;
-	double rotation;
-	SDL_RendererFlip flip;
 
 	void Delete();
 	bool ToDelete;
@@ -40,6 +36,7 @@ public:
 	// Pointers
 	RendererBase* Renderer;
 	SoundManager* SoundController;
+
 	// Debug
 	bool bDrawCollisions;
 	void DrawCollisions();

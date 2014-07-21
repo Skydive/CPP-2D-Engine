@@ -69,6 +69,7 @@ void RendererSDL::PrecacheTexture(const std::string& name, const std::string& pa
 	TextureRepository[name]->Extrai["Height"] = texHeight;
 	TexSizeRepository[name] = Vector2(texWidth, texHeight);
 	SDL_FreeSurface(surface);
+	printf("Precached Texture: %s\n", name.c_str());
 }
 
 void RendererSDL::RenderImage(const char* textureID, Vector2 worldposition)

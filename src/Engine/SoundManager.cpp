@@ -59,7 +59,7 @@ void SoundManager::StopMusic()
 	Mix_HaltMusic();
 }
 
-void SoundManager::Cleanup()
+SoundManager::~SoundManager()
 {
 	for(auto iter = SoundRepository.begin(); iter != SoundRepository.end(); iter++)
 	{

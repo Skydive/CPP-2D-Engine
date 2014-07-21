@@ -77,8 +77,8 @@ Entity* Level::Spawn(std::string ID, Entity* s, Vector2 pos)
 	s->ID = ID;
 
 	EntityRepository.push_front(s);
-	s->Initialize();
 	s->DefaultProperties();
+	s->Initialize();
 	s->Spawn();
 	return s;
 }

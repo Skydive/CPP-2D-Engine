@@ -12,6 +12,7 @@ class SoundManager
 {
 public:
 	SoundManager();
+	virtual ~SoundManager();
 	virtual void PrecacheSound(const std::string& name, const std::string& path);
 	virtual void PlaySound(const std::string& name, int channel, int loops);
 
@@ -21,8 +22,6 @@ public:
 	virtual void ResumeMusic();
 	virtual void PauseMusic();
 	virtual void StopMusic();
-
-	virtual void Cleanup();
 
 protected:
 	std::map<std::string, SDLSoundWrapper*> SoundRepository;

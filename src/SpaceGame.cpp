@@ -13,7 +13,6 @@
 void SpaceGame::Precache()
 {
 	Renderer->PrecacheTexture("Background", "/res/Background.png");
-	Renderer->PrecacheTexture("ToiletMan", "/res/ToiletMan.png");
 	Renderer->PrecacheFont("ArialSmall", "/res/arial.ttf", 15);
 
 	SoundController->PrecacheMusic("FeintTowerOfHeaven", "/res/FormatFactoryFeint - Tower Of Heaven.mp3");
