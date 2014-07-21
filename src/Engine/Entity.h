@@ -2,6 +2,9 @@
 
 #include "Vector2.h"
 #include "RendererBase.h"
+#include "SoundManager.h"
+
+///TODO: Properly implement Entity:IDCount
 
 class Entity
 {
@@ -36,7 +39,7 @@ public:
 
 	// Pointers
 	RendererBase* Renderer;
-
+	SoundManager* SoundController;
 	// Debug
 	bool bDrawCollisions;
 	void DrawCollisions();

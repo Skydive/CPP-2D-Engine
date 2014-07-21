@@ -1,3 +1,5 @@
+///TODO: Complete the Direct3D renderer.
+
 #ifdef DX_SUPPORTED
 
 #include <stdlib.h>

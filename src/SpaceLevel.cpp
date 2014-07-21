@@ -6,9 +6,9 @@
 #include "Player.h"
 #include "TestEntity.h"
 
-void SpaceLevel::Initialize(RendererBase* r)
+void SpaceLevel::Initialize(RendererBase* r, SoundManager* soundcontroller)
 {
-	Super::Initialize(r);
+	Super::Initialize(r, soundcontroller);
 	Spawn("Player", new Player(), Vector2(0, 0));
 	for(int i=1; i<Renderer->TexSizeRepository["Background"].x; i+=100)
 	{

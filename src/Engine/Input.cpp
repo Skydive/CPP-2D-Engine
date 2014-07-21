@@ -48,7 +48,6 @@ void Input::EventHandler(SDL_Event *e)
 
 bool Input::GetKey(int keyCode)
 {
-	// TODO: GET KEY
 	return keyState[keyCode];
 }
 
@@ -59,7 +58,6 @@ bool Input::GetKeyDown(int keyCode)
 
 bool Input::GetKeyUp(int keyCode)
 {
-	// TODO GET KEY UP
 	return NULL;
 }
 

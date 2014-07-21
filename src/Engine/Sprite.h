@@ -1,5 +1,6 @@
 #include "Entity.h"
 
+///TODO: Implement this in a useful way
 
 class Sprite : public Entity
 {

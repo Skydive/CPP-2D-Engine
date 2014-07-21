@@ -1,5 +1,5 @@
 # CPP-2D-Engine
-## Current Version: Alpha 0.05
+## Current Version: Alpha 0.045
 A work in development, to say the least.
 
 Compile using the GNU Compiler Collection (GCC) or CodeBlocks.
@@ -34,35 +34,21 @@ Compile using the GNU Compiler Collection (GCC) or CodeBlocks.
 
 ### TODO (Non-exhaustive list):
 - Engine (Major and Significant):
-  - Engine.cpp: Platform independent basepath location.
-  - Engine.cpp: ADD FPS AND DELTATIME!
-  - Engine.cpp: Fix Tick. (Make it an ACTUAL tick rather than being called when render is) {TICK IS A LIE}
-  - Engine.cpp: Implement pausing
-  - Entity.h: Properly implement Entity:IDCount
-  - Globals.h: Add GUI support
-  - Globals.h: Make more utility functions
-  - Globals.h: Make some sort of API documentation
-  - Globals.h: 64 bit
-  - Globals.h: Add Linux compatibility
-  - Globals.h: Get rid of inconsistencies between char* and std::string, surely the latter is better.
-  - Globals.h: BORING: Deal with licensing
-  - LinkedList.h: Create proper iteration in contrast to lambda functions.
-  - LinkedList.h: i>length check should not be necessary? (But apparently it is)
-  - LinkedList.h: Figure out why an extra ->next is required.
-  - RendererBase.cpp: Improve this
-  - RendererBase.cpp: Improve this
-  - RendererDirect3D.cpp: Complete the Direct3D renderer.
-  - RendererOpenGL.cpp: Fix the OpenGL renderer to work with images
-  - RendererSDL.h: make SDL_RendererFlip and SDL_Colour my own type to avoid SDL.h inclusion in RendererBase?
-  - SoundManager.cpp: Implement an entire resource manager which encapsulated the soundmanager and renderer.
-  - SoundManager.cpp: MP3s with SDL Mixer MUST be of a bitrate of 256kbps and 44100Hz sample rate. (Fix this is possible?)
-  - SoundManager.cpp: Add validation to PlaySound()
-  - Sprite.cpp: Shorten or Clean Collision Perhaps. Use an external handler?
-  - Sprite.cpp: Implement Box/Sphere AND per pixel collision detection.
-  - Sprite.h: Implement this in a useful way
+  - Platform independent basepath location.
+  - ADD FPS AND DELTATIME!
+  - GET KEY
+  - FIX THIS. Why doesn't it work!?
+  - Why do an extra next. Why on earth does this work!?
+  - Improve this
+  - Improve this
+  - make SDL_RendererFlip my own type?
+  - Add validation
+  - Shorten or Clean Collision Perhaps. Use an external handler?
+  - Implement Box/Sphere AND per pixel collision detection.
 - Game (Minor and virtually pointless:
-  - Player.cpp: Fix stutter caused by Vector2 and Vector2f conversion
-  - Player.cpp: Resolve -position issue.
+  - Create a Sprite class. (Useful for image property handling and collision detection).
+  - Fix stutter caused by Vector2 and Vector2f conversion
+  - Resolve this.
 
 
 ### Changelog
@@ -106,8 +92,3 @@ Compile using the GNU Compiler Collection (GCC) or CodeBlocks.
   - Version -> Alpha 0.045
   - Fixed vector magnitude functions. (Thanks Coi!)
   - Fixed LinkedList deletion!
-- 9-7-14 / 10-7-14
-  - Version -> Alpha 0.05
-  - Added readme generation (needs to be improved though TODOs in code) (23:59)
-  - Moved SDL_mixer out of RendererBase class. (0:30)
-  - Added lots of TODOS (1:05)

@@ -15,17 +15,19 @@ void SpaceGame::Precache()
 	Renderer->PrecacheTexture("Background", "/res/Background.png");
 	Renderer->PrecacheTexture("ToiletMan", "/res/ToiletMan.png");
 	Renderer->PrecacheFont("ArialSmall", "/res/arial.ttf", 15);
-	Renderer->PrecacheMusic("FeintTowerOfHeaven", "/res/FormatFactoryFeint - Tower Of Heaven.mp3");
-	Renderer->PrecacheSound("Thump","/res/Bounce.wav");
+
+	SoundController->PrecacheMusic("FeintTowerOfHeaven", "/res/FormatFactoryFeint - Tower Of Heaven.mp3");
+	SoundController->PrecacheSound("Thump","/res/Bounce.wav");
+
 	Super::Precache();
 }
 
 void SpaceGame::Start()
 {
-	Renderer->PlayMusic("FeintTowerOfHeaven");
+	SoundController->PlayMusic("FeintTowerOfHeaven");
 	printf("Space Game Started!\n");
 	CurrentLevel = new SpaceLevel();
-	CurrentLevel->Initialize(Renderer);
+	CurrentLevel->Initialize(Renderer, SoundController);
 	Super::Start();
 }
 
@@ -56,7 +58,7 @@ void SpaceGame::GameLoop()
 
 void SpaceGame::Cleanup()
 {
-	Renderer->StopMusic();
+	SoundController->StopMusic();
 	Super::Cleanup();
 }
 

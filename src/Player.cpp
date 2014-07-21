@@ -1,5 +1,3 @@
-//TODO: Create a Sprite class. (Useful for image property handling and collision detection).
-
 #include "Player.h"
 #include <stdio.h>
 #include <math.h>
@@ -57,9 +55,9 @@ void Player::Tick()
 
 void Player::OnCollision()
 {
-	if(Renderer->IsMusicPlaying())
-		Renderer->StopMusic();
-	Renderer->PlaySound("Thump", -1, 0);
+	if(SoundController->IsMusicPlaying())
+		SoundController->StopMusic();
+	SoundController->PlaySound("Thump", -1, 0);
 }
 
 void Player::Input()
@@ -91,8 +89,8 @@ void Player::Render()
 
 	// Make the camera follow the player.
 	// -position to make the camera render at the players position. Dimensions used to make it centre in the middle of the player.
-	// TODO: Fix stutter caused by Vector2 and Vector2f conversion
-	// Why is it -position. TODO: Resolve this.
+	/// TODO: Fix stutter caused by Vector2 and Vector2f conversion
+	/// TODO: Resolve -position issue.
 	Renderer->SetRenderView((-position.ToInteger())-(dimensions/2));
 
 	Renderer->RenderImage("ToiletMan", position.ToInteger(), scale, rotation, flip);

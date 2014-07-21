@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <algorithm>
 
-//TODO: Platform independent basepath location.
+
 #include <windows.h>
 
 #include "Engine.h"
@@ -10,7 +10,11 @@
 #include "Input.h"
 #include "Globals.h"
 
-/// TODO: URGENT. ADD FPS AND DELTATIME!
+///TODO: Platform independent basepath location.
+///TODO: ADD FPS AND DELTATIME!
+///TODO: Fix Tick. (Make it an ACTUAL tick rather than being called when render is) {TICK IS A LIE}
+///TODO: Implement pausing
+
 // Static Variables
 States Engine::State = States();
 GameProperties Engine::Properties = GameProperties();
@@ -55,6 +59,7 @@ void Engine::Initialize(GameProperties props)
 	State.Quit = false;
 	Properties = props;
 
+	SoundController = new SoundManager();
 	Renderer = new RendererSDL();
 	//Renderer = new RendererOpenGL();
 
@@ -122,7 +127,10 @@ void Engine::Cleanup()
 		CurrentLevel->Cleanup();
 	}
 	Renderer->Cleanup();
+	SoundController->Cleanup();
+
 	delete Renderer;
+	delete SoundController;
 }
 
 

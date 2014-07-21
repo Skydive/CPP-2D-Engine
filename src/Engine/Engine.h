@@ -4,7 +4,7 @@
 
 #include "Level.h"
 #include "RendererBase.h"
-
+#include "SoundManager.h"
 
 // Struct to hold the desired size of the window, e.t.c.
 struct GameProperties
@@ -32,7 +32,7 @@ public:
 
 	// Component Variables
 	RendererBase* Renderer;
-
+	SoundManager* SoundController;
 	// Base Functions
 	virtual void Initialize(GameProperties props);
 	void BaseEventHandler(SDL_Event& e);

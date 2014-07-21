@@ -72,7 +72,7 @@ void Sprite::Render()
 	Super::Render();
 }
 
-// Possibly very long collision function.
+// Very long collision function.
 // TODO: Shorten or Clean Collision Perhaps. Use an external handler?
 bool Sprite::IsColliding(Entity* collider)
 {

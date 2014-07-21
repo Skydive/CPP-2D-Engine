@@ -4,7 +4,7 @@
 
 #include "LinkedList.h"
 #include "Entity.h"
-
+#include "SoundManager.h"
 
 class Level
 {
@@ -12,13 +12,14 @@ public:
 	virtual ~Level();
 
 	// Events
-	virtual void Initialize(RendererBase* renderer);
+	virtual void Initialize(RendererBase* renderer, SoundManager* soundcontroller);
 	virtual void Cleanup();
 	virtual void EventHandler(SDL_Event* e);
 	virtual void Render();
 
 	// Data
 	RendererBase* Renderer;
+	SoundManager* SoundController;
 	std::string LevelName;
 	LinkedList<Entity*> EntityRepository;
 

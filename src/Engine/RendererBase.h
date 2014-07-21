@@ -2,14 +2,8 @@
 #include <string>
 #include <map>
 
+#include "SDL2/SDL.h"
 #include "Vector2.h"
-
-// Temporary
-#include "SDL2/SDL_mixer.h"
-
-#include "ResourceWrapper.h"
-CreateFakeWrapper(SDLMusicWrapper, ResourceWrapper<Mix_Music*>);
-CreateFakeWrapper(SDLSoundWrapper, ResourceWrapper<Mix_Chunk*>);
 
 class RendererBase
 {
@@ -30,19 +24,6 @@ public:
 	virtual void PrecacheFont(const std::string& name, const std::string& path, int fontsize);
 	virtual void RenderFont(const std::string& message, const char* fontID, Vector2 worldposition, SDL_Color color);
 	virtual void RenderFont(const std::string& message, const char* fontID, Vector2 worldposition, double rotation, SDL_RendererFlip flip, SDL_Color color);
-
-	// Sound Stuff (Temporary)
-	virtual void PrecacheSound(const std::string& name, const std::string& path);
-	virtual void PrecacheMusic(const std::string& name, const std::string& path);
-	virtual void PlaySound(const std::string& name, int channel, int loops);
-	virtual void PlayMusic(const std::string& name);
-	virtual bool IsMusicPlaying();
-	virtual void ResumeMusic();
-	virtual void PauseMusic();
-	virtual void StopMusic();
-
-	std::map<std::string, SDLMusicWrapper*> MusicRepository;
-	std::map<std::string, SDLSoundWrapper*> SoundRepository;
 
 	virtual void SetRenderView(int x, int y);
 	virtual void SetRenderView(Vector2 pos);

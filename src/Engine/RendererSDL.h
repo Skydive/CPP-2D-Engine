@@ -11,6 +11,8 @@
 CreateFakeWrapper(SDLTextureWrapper, ResourceWrapper<SDL_Texture*>);
 CreateFakeWrapper(SDLFontWrapper, ResourceWrapper<TTF_Font*>);
 
+// TODO: make SDL_RendererFlip and SDL_Colour my own type to avoid SDL.h inclusion in RendererBase?
+
 class RendererSDL : public RendererBase
 {
 public:
@@ -27,7 +29,7 @@ public:
 	// Texture Stuff
 	void PrecacheTexture(const std::string& name, const std::string& path) override;
 	void RenderImage(const char* textureID, Vector2 worldposition) override;
-	void RenderImage(const char* textureID, Vector2 worldposition, double scale, double rotation, SDL_RendererFlip flip) override; // TODO: make SDL_RendererFlip my own type?
+	void RenderImage(const char* textureID, Vector2 worldposition, double scale, double rotation, SDL_RendererFlip flip) override;
 	bool TextureExists(const std::string& Texture) override;
 
 	// Font Stuff

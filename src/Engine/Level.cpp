@@ -3,11 +3,14 @@
 #include <stdio.h>
 #include <algorithm>
 
+
+
 Level::~Level(){}
 
-void Level::Initialize(RendererBase* renderer)
+void Level::Initialize(RendererBase* renderer, SoundManager* soundcontroller)
 {
 	Renderer = renderer;
+	SoundController = soundcontroller;
 }
 
 void Level::EventHandler(SDL_Event* e)
@@ -63,7 +66,10 @@ Entity* Level::Spawn(Entity* entity, Vector2 pos)
 Entity* Level::Spawn(std::string ID, Entity* s, Vector2 pos)
 {
 	printf("Spawned: %s\n", ID.c_str());
+
 	s->Renderer = Renderer;
+	s->SoundController = SoundController;
+
 	Entity::IDCount++;
 	s->ToDelete = false;
 	s->position.x = pos.x;

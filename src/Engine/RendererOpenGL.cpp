@@ -4,6 +4,9 @@
  *  Created on: 7 Mar 2014
  *      Author: Khalid
  */
+
+///TODO: Fix the OpenGL renderer to work with images
+
 #include "RendererOpenGL.h"
 
 #include <stdlib.h>

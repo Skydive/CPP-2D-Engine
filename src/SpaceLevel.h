@@ -3,7 +3,7 @@
 class SpaceLevel : public Level
 {
 public:
-	void Initialize(RendererBase* r);
+	void Initialize(RendererBase* r, SoundManager* soundcontroller) override;
 	void Render() override;
 	void EventHandler(SDL_Event* e) override;
 private:

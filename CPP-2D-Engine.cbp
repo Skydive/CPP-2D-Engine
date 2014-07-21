@@ -60,6 +60,8 @@
 		<Unit filename="src/Engine/RendererSDL.cpp" />
 		<Unit filename="src/Engine/RendererSDL.h" />
 		<Unit filename="src/Engine/ResourceWrapper.h" />
+		<Unit filename="src/Engine/SoundManager.cpp" />
+		<Unit filename="src/Engine/SoundManager.h" />
 		<Unit filename="src/Engine/Sprite.cpp" />
 		<Unit filename="src/Engine/Sprite.h" />
 		<Unit filename="src/Engine/Timer.cpp" />

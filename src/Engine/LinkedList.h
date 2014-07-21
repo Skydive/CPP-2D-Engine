@@ -35,7 +35,7 @@ public:
 	LinkedNode<T>* get_head();
 	void remove(LinkedNode<T>* node);
 
-	//TODO: FIX THIS. Why doesn't it work!?
+	/// TODO: Create proper iteration in contrast to lambda functions.
 	template<typename IterF>
 	void iterate(IterF iterfunction);
 
@@ -149,6 +149,7 @@ void LinkedList<T>::remove(LinkedNode<T>* node)
 		prev_node = conductor;
 		conductor = conductor->next;
 
+		/// TODO: i>length check should not be necessary? (But apparently it is)
 		if(i > length)
 			return;
 		i++;
@@ -157,7 +158,7 @@ void LinkedList<T>::remove(LinkedNode<T>* node)
 	{
 		return;
 	}
-	// TODO: Why do an extra next. Why on earth does this work!?
+	/// TODO: Figure out why an extra ->next is required.
 	prev_node->next->next = conductor->next->next;
 	if(node == h_node)
 	{
