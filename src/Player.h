@@ -6,7 +6,7 @@ class Player : public Sprite
 public:
 	void Spawn() override;
 	void Initialize() override;
-	void Tick() override;
+	void Tick(float DeltaTime) override;
 	void Input() override;
 	void Render() override;
 	void OnCollision();

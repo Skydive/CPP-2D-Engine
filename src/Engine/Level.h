@@ -5,6 +5,7 @@
 #include "LinkedList.h"
 #include "Entity.h"
 #include "SoundManager.h"
+#include "Timer.h"
 
 class Level
 {
@@ -16,12 +17,14 @@ public:
 	virtual void Cleanup();
 	virtual void EventHandler(SDL_Event* e);
 	virtual void Render();
+	virtual void Tick(float DeltaTime);
 
 	// Data
 	RendererBase* Renderer;
 	SoundManager* SoundController;
 	std::string LevelName;
 	LinkedList<Entity*> EntityRepository;
+	Timer TickTimer;
 
 	// Functions
 
@@ -33,4 +36,6 @@ public:
 
 	template<typename LoopF>
 	void LoopEntsByID(std::string ID, LoopF &loopFunction);
+
+	float LevelSpeed;
 };

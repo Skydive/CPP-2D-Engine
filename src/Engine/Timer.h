@@ -11,6 +11,7 @@ public:
 	virtual void Stop();
 	virtual void Pause();
 	virtual void Resume();
+	virtual void Reset();
 	Uint32 GetTicks();
 
 	bool IsStarted();

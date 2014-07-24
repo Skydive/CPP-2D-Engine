@@ -34,10 +34,12 @@ def FindToDos(FindPath, FileTypes):
     for path in glob(FindPath):
         for filetype in FileTypes:
             if(splitext(path)[1][1:] == filetype):
+                LineNumber=1;
                 for line in open(path, "r").read().split("\n"):    
                     Status = line.find("TODO:");
                     if(Status != -1):
-                        TODOS.append("  - {}: {}\n".format(split(path)[1], line[Status+len("TODO:"):].strip()));
+                        TODOS.append("  - {}: Line {}: {}\n".format(split(path)[1], LineNumber, line[Status+len("TODO:"):].strip()));
+                    LineNumber += 1;
 
     return TODOS;
 
@@ -46,7 +48,7 @@ def ToDoList():
     List = "";
     EngineTODOS = ["- Engine (Major and Significant):"+"\n"]
     EngineTODOS += FindToDos("..\src\Engine\*", ["h", "cpp"]);
-    GameTODOS = ["- Game (Minor and virtually pointless:"+"\n"]
+    GameTODOS = ["- Game (Minor and virtually pointless):"+"\n"]
     GameTODOS += FindToDos("..\src\*", ["h", "cpp"]);
     for i in (EngineTODOS+GameTODOS):
         List += i;

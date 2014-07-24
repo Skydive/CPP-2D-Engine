@@ -51,6 +51,7 @@
 		<Unit filename="src/Engine/Level.cpp" />
 		<Unit filename="src/Engine/Level.h" />
 		<Unit filename="src/Engine/LinkedList.h" />
+		<Unit filename="src/Engine/Math.h" />
 		<Unit filename="src/Engine/RendererBase.cpp" />
 		<Unit filename="src/Engine/RendererBase.h" />
 		<Unit filename="src/Engine/RendererDirect3D.cpp" />

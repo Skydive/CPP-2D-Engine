@@ -10,7 +10,7 @@ void Entity::Spawn(){}
 bool Entity::IsColliding(Entity* collider){ return false; }
 
 void Entity::EventHandler(SDL_Event &e){}
-void Entity::Tick(){}
+void Entity::Tick(float DeltaTime){}
 void Entity::Input(){}
 void Entity::Render(){}
 void Entity::Cleanup(){}

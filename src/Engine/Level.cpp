@@ -11,6 +11,9 @@ void Level::Initialize(RendererBase* renderer, SoundManager* soundcontroller)
 {
 	Renderer = renderer;
 	SoundController = soundcontroller;
+	LevelSpeed = 1.f;
+	TickTimer = Timer();
+	TickTimer.Start();
 }
 
 void Level::EventHandler(SDL_Event* e)
@@ -26,12 +29,23 @@ void Level::EventHandler(SDL_Event* e)
 
 void Level::Render()
 {
+	// Detect Tick:
+	Uint32 PreT = TickTimer.GetTicks();
+	const Uint32 TickLength = 10*LevelSpeed;
+	if(PreT > TickLength)
+	{
+		float deltaTime = 1+((PreT-TickLength)/TickLength);
+		Tick(deltaTime);
+		TickTimer.Reset();
+	}
+
+
 	EntityRepository.iterate([&] (LinkedNode<Entity*>* node, Entity* ent)
 	{
 		if(ent != nullptr)
 		{
 			ent->Input();
-			ent->Tick();
+
 			if(ent->Renderer != nullptr)
 			{
 				ent->Render();
@@ -83,35 +97,33 @@ Entity* Level::Spawn(std::string ID, Entity* s, Vector2 pos)
 	return s;
 }
 
-template<typename LoopF>
-void Level::LoopEntsByID(std::string ID, LoopF &loopFunction)
+void Level::Tick(float DeltaTime)
 {
 	EntityRepository.iterate([&] (LinkedNode<Entity*>* node, Entity* ent)
 	{
 		if(ent != nullptr)
 		{
+			ent->Tick(DeltaTime);
+		}
+	});
+}
+
+template<typename LoopF>
+void Level::LoopEntsByID(std::string ID, LoopF &loopFunction)
+{
+	EntityRepository.iterate([&] (LinkedNode<Entity*>* node, Entity* ent)
+	{
+		// TODO: Fix this method of iteration.
+		if(ent != nullptr)
+		{
 			std::string str(ent->ID); std::transform(str.begin(), str.end(), str.begin(), ::tolower);
 			std::string sub(ID); std::transform(sub.begin(), sub.end(), sub.begin(), ::tolower);
-			if(str.find(sub) != std::string::npos)
+			if(str.find(sub) == std::string::npos)
 			{
 				loopFunction(*ent);
 			}
 		}
 	});
-	/*
-	for(auto iter = EntityRepository.begin(); iter != EntityRepository.end(); iter++)
-	{
-		if(*iter != nullptr)
-		{
-			std::string str((*iter)->ID); std::transform(str.begin(), str.end(), str.begin(), ::tolower);
-			std::string sub(ID); std::transform(sub.begin(), sub.end(), sub.begin(), ::tolower);
-			if(str.find(sub) != std::string::npos)
-			{
-				loopFunction(**iter);
-			}
-		}
-	}
-	*/
 }
 
 void Level::Cleanup()

@@ -46,6 +46,17 @@ void Timer::Resume()
 	}
 }
 
+void Timer::Reset()
+{
+	StartTicks = 0;
+	PausedTicks = 0;
+	bPaused = false;
+	bStarted = true;
+
+	StartTicks = SDL_GetTicks();
+	PausedTicks = 0;
+}
+
 Uint32 Timer::GetTicks()
 {
 	if(bStarted)

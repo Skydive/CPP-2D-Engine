@@ -6,6 +6,10 @@
 #include "RendererBase.h"
 #include "SoundManager.h"
 
+#define FPSCALCULATION_LENGTH 50
+
+#include "Timer.h"
+
 // Struct to hold the desired size of the window, e.t.c.
 struct GameProperties
 {
@@ -54,6 +58,17 @@ public:
 	static States State;
 	static GameProperties Properties;
 	static std::string BasePath;
+
 	// Game
 	Level* CurrentLevel;
+
+
+public:
+	void FPSInitialize();
+	void FPSThink();
+protected:
+	uint32_t FrameCount;
+	uint32_t FrameTimes[FPSCALCULATION_LENGTH];
+	uint32_t FrameTimeLast;
+	static float FPS;
 };

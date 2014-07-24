@@ -9,10 +9,14 @@
 #include "SpaceGame.h"
 #include "SpaceLevel.h"
 
+#include <string>
+#include <sstream>
+#include "Engine/Math.h"
 
 void SpaceGame::Precache()
 {
 	Renderer->PrecacheTexture("Background", "/res/Background.png");
+	Renderer->PrecacheFont("FPSFont", "/res/arial.ttf", 10);
 	Renderer->PrecacheFont("ArialSmall", "/res/arial.ttf", 15);
 
 	SoundController->PrecacheMusic("FeintTowerOfHeaven", "/res/FormatFactoryFeint - Tower Of Heaven.mp3");
@@ -43,6 +47,13 @@ void SpaceGame::EventHandler(SDL_Event& e)
 void SpaceGame::Render()
 {
 	Super::Render();
+	// Render over everything, put it AFTER Super::Render();
+	// FPS Display
+	Renderer->RenderFillRect(Renderer->LocalToWorldVector(Vector2(0, 0)), Vector2(80, 10), {255, 255, 255});
+
+	std::ostringstream ss;
+	ss << "FPS: " << FRound(FPS, 3);
+	Renderer->RenderFont(ss.str(), "FPSFont", Renderer->LocalToWorldVector(Vector2(0,0)), {0, 0, 0});
 }
 
 void SpaceGame::Initialize(GameProperties props)

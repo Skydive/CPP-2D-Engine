@@ -14,7 +14,7 @@ public:
 	virtual void Spawn();
 	virtual void EventHandler(SDL_Event &e);
 	virtual void Render();
-	virtual void Tick();
+	virtual void Tick(float DeltaTime);
 	virtual void Input();
 	virtual void DefaultProperties();
 	virtual void Cleanup();

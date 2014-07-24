@@ -48,3 +48,15 @@
   - Version -> Alpha 0.055
   - Fixed RenderView function. It is a lot easier to work with now.
   - Gave Sprite class a purpose. (Already supports textures)
+  - Origin of sprite texture is the centre. (Is this bad?)
+- 24-7-14
+  - Implemented an FPS counter.
+  - Got sick of 60 fps and disabled VSync. (Everything experienced a spasm. Character was moving too fast, the tick function was in the render function and was called a the same rate!)
+  - Fixed a memory leak in SDLRenderer::RenderFont(). Surface and Texture was not being Freed/Destroyed. (First memory leak, found during the spasm as the render rate was so high!)
+  - Implemented Tick using Timer class to fix the spasm. (Gameplay is very smooth now).
+  - Added float LevelSpeed to Level.cpp
+  - Tick function now is Tick(float DeltaTime) (Multiply all movement with DeltaTime)
+  - Iterated through the game and made these changes to each Entity respectively.
+  - Whoa! 5000 fps when holding left to remove the other entities. This sure is cool! I bet you don't get 5000 fps playing Call of Duty! Hah!
+  - Updated Generation to include line numbers in the TODO list.
+  

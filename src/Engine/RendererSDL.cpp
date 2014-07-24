@@ -33,7 +33,7 @@ void RendererSDL::Initialize()
 		exit(EXIT_FAILURE);
 	}
 
-	GameRenderer = SDL_CreateRenderer(GameWindow, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+	GameRenderer = SDL_CreateRenderer(GameWindow, -1, SDL_RENDERER_ACCELERATED);
 	if(GameRenderer == nullptr)
 	{
 		printf("Renderer could not be created! SDL_Error: %s\n", SDL_GetError());
@@ -199,6 +199,9 @@ void RendererSDL::RenderFont(const std::string& message, const char* fontID, Vec
 
 	SDL_Rect TexDimensions = {pos.x, pos.y, texWidth, texHeight};
 	SDL_RenderCopyEx(GameRenderer, texture, NULL, &TexDimensions, rotation, NULL, flip);
+
+	SDL_DestroyTexture(texture);
+	SDL_FreeSurface(surf);
 
 }
 

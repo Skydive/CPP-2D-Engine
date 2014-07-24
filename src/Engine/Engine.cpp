@@ -10,15 +10,16 @@
 #include "Input.h"
 #include "Globals.h"
 
+
+
 ///TODO: Platform independent basepath location.
-///TODO: ADD FPS AND DELTATIME!
-///TODO: Fix Tick. (Make it an ACTUAL tick rather than being called when render is) {TICK IS A LIE}
 ///TODO: Implement pausing
 
 // Static Variables
 States Engine::State = States();
 GameProperties Engine::Properties = GameProperties();
 std::string Engine::BasePath = std::string();
+float Engine::FPS = 0;
 
 Engine::~Engine(){}
 
@@ -95,10 +96,13 @@ void Engine::GameLoop()
 {
     SDL_Event event;
 
+	FPSInitialize();
+
 	while(!State.Quit)
 	{
+		// Entity Handling
 		Input::Update();
-		// Update Input Here
+
 		while (SDL_PollEvent(&event))
 		{
 			Input::EventHandler(&event);
@@ -110,13 +114,14 @@ void Engine::GameLoop()
 			}
 		}
 
+		// Rendering
 		Renderer->RenderClear();
 
-		// Rendering
 		Render();
 
 		Renderer->RenderPresent();
 
+		FPSThink();
 	}
 }
 
@@ -144,4 +149,43 @@ void Engine::LaunchMessage()
 	printf("C++ 2D Engine Launched\n");
 	printf("Version: %s\n", Global::ENGINE_VERSION.c_str());
 	printf("Created By Khalid Aleem\n\n");
+}
+
+// FPS Handlers
+
+void Engine::FPSInitialize()
+{
+	memset(FrameTimes, 0, sizeof(FrameTimes));
+	FrameCount = 0;
+	FPS = 0;
+	FrameTimeLast = SDL_GetTicks();
+}
+
+void Engine::FPSThink()
+{
+	Uint32 frametimesindex, ticks, fcount;
+
+	frametimesindex = FrameCount % FPSCALCULATION_LENGTH;
+	ticks = SDL_GetTicks();
+	FrameTimes[frametimesindex] = ticks - FrameTimeLast;
+	FrameTimeLast = ticks;
+	FrameCount++;
+
+	if (FrameCount < FPSCALCULATION_LENGTH)
+	{
+		fcount = FrameCount;
+    }
+    else
+	{
+		fcount = FPSCALCULATION_LENGTH;
+	}
+
+	FPS = 0;
+	for (Uint32 i = 0; i < fcount; i++)
+	{
+		FPS += FrameTimes[i];
+	}
+
+	FPS /= fcount;
+	FPS = 1000.f / FPS;
 }

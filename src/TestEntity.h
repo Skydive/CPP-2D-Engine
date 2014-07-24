@@ -6,10 +6,12 @@
 class TestEntity : public Entity
 {
 public:
-	void Render();
-	void Input();
-	void Tick();
+	void Render() override;
+	void Input() override;
+	void Tick(float DeltaTime) override;
 
 	void DefaultProperties() override;
 	Vector2f velocity;
+private:
+	typedef Entity Super;
 };

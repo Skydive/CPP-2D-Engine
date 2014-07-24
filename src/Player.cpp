@@ -19,55 +19,41 @@ void Player::Initialize()
 	Super::Initialize();
 }
 
-void Player::Tick()
+void Player::Tick(float DeltaTime)
 {
-	velocity = velocity * 0.95;
+	velocity = velocity * 0.95 * DeltaTime;
 
 	Vector2 BackgroundDimensions = Renderer->TexSizeRepository["Background"];
-	if(position.x <= 0)
+	if(position.x <= dimensions.x/2)
 	{
-		velocity.x *= -1.0f;
+		velocity.x *= -1.0f * DeltaTime;
 		if(velocity.x < 0)
 			velocity.x = 1.5f;
 		OnCollision();
 	}
-	else if(position.x >= BackgroundDimensions.x - dimensions.x)
+	else if(position.x >= BackgroundDimensions.x - dimensions.x/2)
 	{
-		velocity.x *= -1.0f;
+		velocity.x *= -1.0f * DeltaTime;
 		if(velocity.x > 0)
 			velocity.x = -1.5f;
 		OnCollision();
 	}
-	if(position.y <= 0)
+	if(position.y <= dimensions.y/2)
 	{
-		velocity.y *= -1.0f;
+		velocity.y *= -1.0f * DeltaTime;
 		if(velocity.y < 0)
 			velocity.y = 1.5f;
 		OnCollision();
 	}
-	else if(position.y >= BackgroundDimensions.y - dimensions.y)
+	else if(position.y >= BackgroundDimensions.y - dimensions.y/2)
 	{
-		velocity.y *= -1.0f;
+		velocity.y *= -1.0f * DeltaTime;
 		if(velocity.y > 0)
 			velocity.y = -1.5f;
 		OnCollision();
 	}
 
-
-	position.x += velocity.x;
-	position.y += velocity.y;
-}
-
-void Player::OnCollision()
-{
-	if(SoundController->IsMusicPlaying())
-		SoundController->StopMusic();
-	SoundController->PlaySound("Thump", -1, 0);
-}
-
-void Player::Input()
-{
-	float Acceleration = 0.5;
+	float Acceleration = 0.5*DeltaTime;
 	if(Input::GetKey(SDL_SCANCODE_W))
 	{
 		velocity.x += Acceleration*sin(rotation*M_PI/180);
@@ -87,15 +73,30 @@ void Player::Input()
 	{
 		rotation += 3.25;
 	}
+
+	position.x += velocity.x;
+	position.y += velocity.y;
+}
+
+void Player::OnCollision()
+{
+	if(SoundController->IsMusicPlaying())
+		SoundController->StopMusic();
+	SoundController->PlaySound("Thump", -1, 0);
+}
+
+void Player::Input()
+{
+	Super::Input();
 }
 
 void Player::Render()
 {
-	/// TODO: Resolve -position issue.
 	Renderer->SetRenderView(position);
 
 	Super::Render();
 
+	///TODO: Sort out the position of this.
 	Renderer->RenderFont("I am a man", "ArialSmall", position.ToInteger()-Vector2(0, 10), {0, 0, 0});
 }
 

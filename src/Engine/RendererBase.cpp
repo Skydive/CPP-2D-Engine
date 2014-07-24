@@ -13,8 +13,8 @@ void RendererBase::RenderClear(){}
 void RendererBase::Cleanup(){}
 RendererBase::~RendererBase(){}
 
+///TODO: Make Vector2f the standard for positions, (perhaps recreate the functions Vector2f parameters) CONSISTENCY IS IMPORTANT
 
-///TODO: Clean this
 void RendererBase::SetRenderView(int x, int y)
 {
 	this->RenderView.x = -x;
