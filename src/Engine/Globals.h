@@ -3,7 +3,7 @@
 
 namespace Global
 {
-	const std::string ENGINE_VERSION = "Alpha 0.06";
+	const std::string ENGINE_VERSION = "Alpha 0.065";
 };
 
 ///TODO: Add GUI support

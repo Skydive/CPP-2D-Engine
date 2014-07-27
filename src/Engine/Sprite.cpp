@@ -59,9 +59,7 @@ void Sprite::GenerateTexture()
 	&& Texture != "NULL"
 	&& TexturePath != "NULL")
 	{
-		printf("Test: %s %s\n", Texture.c_str(), TexturePath.c_str());
 		Renderer->PrecacheTexture(Texture, TexturePath);
-		dimensions = Renderer->TexSizeRepository["ToiletMan"].ToFloat()*scale;
 	}
 }
 

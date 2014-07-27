@@ -41,6 +41,8 @@
 			<Add option="-Wall" />
 		</Compiler>
 		<Unit filename="makefile" />
+		<Unit filename="src/Engine/AnimatedSprite.cpp" />
+		<Unit filename="src/Engine/AnimatedSprite.h" />
 		<Unit filename="src/Engine/Engine.cpp" />
 		<Unit filename="src/Engine/Engine.h" />
 		<Unit filename="src/Engine/Entity.cpp" />

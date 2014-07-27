@@ -43,22 +43,20 @@ void RendererSDL::Initialize()
 }
 
 
-void RendererSDL::PrecacheTexture(const std::string& name, const std::string& path)
+int RendererSDL::PrecacheTexture(const std::string& name, const std::string& path)
 {
 	SDL_Surface* surface = IMG_Load((Engine::BasePath+path).c_str());
 	if (surface == nullptr)
 	{
 		printf("Texture precache Fail: %s -> %s", name.c_str(), SDL_GetError());
-		system("PAUSE");
-		exit(EXIT_FAILURE);
+		return PRECACHEFAIL_FAILTOLOAD;
 	}
 
 	SDL_Texture* texture = SDL_CreateTextureFromSurface(GameRenderer, surface);
 	if(texture == nullptr)
 	{
 		printf("Texture could not be created! SDL_Error: %s\n", SDL_GetError());
-		system("PAUSE");
-		exit(EXIT_FAILURE);
+		return PRECACHEFAIL_CREATION;
 	}
 
 	int texWidth, texHeight;
@@ -70,6 +68,8 @@ void RendererSDL::PrecacheTexture(const std::string& name, const std::string& pa
 	TexSizeRepository[name] = Vector2(texWidth, texHeight);
 	SDL_FreeSurface(surface);
 	printf("Precached Texture: %s\n", name.c_str());
+
+	return PRECACHE_SUCCESS;
 }
 
 void RendererSDL::RenderImage(const char* textureID, Vector2 worldposition)
@@ -150,19 +150,21 @@ bool RendererSDL::TextureExists(const std::string& Texture)
 }
 
 // SDL_ttf
-void RendererSDL::PrecacheFont(const std::string& name, const std::string& path, int fontsize)
+int RendererSDL::PrecacheFont(const std::string& name, const std::string& path, int fontsize)
 {
 	TTF_Font *font = TTF_OpenFont((Engine::BasePath+path).c_str(), fontsize);
 	if(font == nullptr)
 	{
 		printf("Font precache fail: %s -> %s", name.c_str(), SDL_GetError());
-		system("PAUSE");
-		exit(EXIT_FAILURE);
+		return PRECACHEFAIL_FAILTOLOAD;
 	}
 
 	FontRepository[name] = new SDLFontWrapper(font);
 	FontRepository[name]->Extras["Path"] = path;
 	FontRepository[name]->Extrai["Size"] = fontsize;
+
+	printf("Precached Font: %s\n", name.c_str());
+	return PRECACHE_SUCCESS;
 }
 
 void RendererSDL::RenderFont(const std::string& message, const char* fontID, Vector2 worldposition, double rotation, SDL_RendererFlip flip, SDL_Color color)

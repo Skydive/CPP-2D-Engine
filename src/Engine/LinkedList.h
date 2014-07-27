@@ -173,11 +173,13 @@ template<typename IterF>
 void LinkedList<T>::iterate(IterF iterfunction)
 {
 	LinkedNode<T>* conductor = h_node;
-
-	iterfunction(h_node, h_node->x);
-	while ( conductor->next != h_node )
+	if(h_node != nullptr && h_node->x != nullptr)
 	{
-		iterfunction(conductor->next, conductor->next->x);
-		conductor = conductor->next;
+		iterfunction(h_node, h_node->x);
+		while ( conductor->next != h_node )
+		{
+			iterfunction(conductor->next, conductor->next->x);
+			conductor = conductor->next;
+		}
 	}
 }

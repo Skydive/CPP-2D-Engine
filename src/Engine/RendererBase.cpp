@@ -3,7 +3,7 @@
 #include <math.h>
 
 void RendererBase::Initialize(){}
-void RendererBase::PrecacheTexture(const std::string& name, const std::string& path){}
+int RendererBase::PrecacheTexture(const std::string& name, const std::string& path){return 0;}
 void RendererBase::RenderImage(const char* textureID, Vector2 worldposition){}
 void RendererBase::RenderImage(const char* textureID, Vector2 worldposition, double scale, double rotation, SDL_RendererFlip flip){}
 void RendererBase::RenderDrawRect(Vector2 worldposition, Vector2 dimensions, SDL_Color color){}
@@ -30,7 +30,7 @@ void RendererBase::SetRenderView(Vector2 pos)
 bool RendererBase::TextureExists(const std::string& Texture){ return false; }
 
 // Font Stuff
-void RendererBase::PrecacheFont(const std::string& name, const std::string& path, int fontsize){}
+int RendererBase::PrecacheFont(const std::string& name, const std::string& path, int fontsize){return 0;}
 void RendererBase::RenderFont(const std::string& message, const char* fontID, Vector2 worldposition, SDL_Color color){}
 void RendererBase::RenderFont(const std::string& message, const char* fontID, Vector2 worldposition, double rotation, SDL_RendererFlip flip, SDL_Color color){}
 

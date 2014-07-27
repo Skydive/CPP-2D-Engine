@@ -7,7 +7,7 @@ CPPVERSION = c++1y
 DIRECTORIES = -L $(BASEDIR)/lib -I $(BASEDIR)/include
 ADDDEP = -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf -lSDL2_mixer -lopengl32 -lglu32 -lglew32
 # -ld3d9
-EXTRA = -Wall -Wno-write-strings
+EXTRA = -Wall -Wno-write-strings -g
 
 all Release Debug:
 	$(CC) \

@@ -5,8 +5,10 @@
 #include <windows.h>
 
 #include "Engine.h"
+
 #include "RendererSDL.h"
 #include "RendererOpenGL.h"
+
 #include "Input.h"
 #include "Globals.h"
 
@@ -61,8 +63,8 @@ void Engine::Initialize(GameProperties props)
 	Properties = props;
 
 	SoundController = new SoundManager();
-	Renderer = new RendererSDL();
-	//Renderer = new RendererOpenGL();
+	//Renderer = new RendererSDL();
+	Renderer = new RendererOpenGL();
 
 	if(SDL_Init( SDL_INIT_VIDEO ) < 0)
 	{

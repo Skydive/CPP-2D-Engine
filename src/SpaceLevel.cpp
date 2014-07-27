@@ -11,10 +11,12 @@
 void SpaceLevel::Initialize(RendererBase* r, SoundManager* soundcontroller)
 {
 	Super::Initialize(r, soundcontroller);
-	Spawn("Player", new Player(), Vector2(0, 0));
+	Spawn("Player", new Player(), Vector2(500, 500));
+
 	for(int i=1; i<Renderer->TexSizeRepository["Background"].x; i+=100)
 	{
-		Spawn("TestEntity", new TestEntity(), Vector2(i, 200));
+		// TODO: Urgent: Fix bug, where when the second to last entity is deleted, the player is no longer iterated through.
+	//	Spawn("TestEntity", new TestEntity(), Vector2(i, 200));
 	}
 }
 

@@ -7,13 +7,18 @@
 void TestEntity::Render()
 {
 	SDL_Color c = {0, 255, 255};
+
+	Super::Render();
+
 	Renderer->RenderFillRect(position, dimensions, c);
+	///TODO: Figure out why this text renders green.
 	Renderer->RenderFont("I am a box", "ArialSmall", position.ToInteger()+Vector2(0, (int)dimensions.y), c);
 }
 
 void TestEntity::Tick(float DeltaTime)
 {
 	velocity = velocity * 0.8 * DeltaTime;
+
 
 	Vector2 BackgroundDimensions = Renderer->TexSizeRepository["Background"];
 	if(position.x <= 0)
@@ -41,6 +46,7 @@ void TestEntity::Tick(float DeltaTime)
 		if(velocity.y > 0)
 			velocity.y = -1.5f;
 	}
+
 
 	if(Input::GetKey(SDL_SCANCODE_UP))
 	{

@@ -27,13 +27,13 @@ public:
 	void RenderFillRect(Vector2 worldposition, Vector2 dimensions, SDL_Color color) override;
 
 	// Texture Stuff
-	void PrecacheTexture(const std::string& name, const std::string& path) override;
+	int PrecacheTexture(const std::string& name, const std::string& path) override;
 	void RenderImage(const char* textureID, Vector2 worldposition) override;
 	void RenderImage(const char* textureID, Vector2 worldposition, double scale, double rotation, SDL_RendererFlip flip) override;
 	bool TextureExists(const std::string& Texture) override;
 
 	// Font Stuff
-	void PrecacheFont(const std::string& name, const std::string& path, int fontsize) override;
+	int PrecacheFont(const std::string& name, const std::string& path, int fontsize) override;
 	void RenderFont(const std::string& message, const char* fontID, Vector2 worldposition, SDL_Color color) override;
 	void RenderFont(const std::string& message, const char* fontID, Vector2 worldposition, double rotation, SDL_RendererFlip flip, SDL_Color color) override;
 

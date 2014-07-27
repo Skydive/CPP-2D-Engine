@@ -9,9 +9,6 @@
 
 void Player::Spawn()
 {
-	// Move to centre
-	position.x = (int)floor((Engine::Properties.Width/2)-(dimensions.x/2));
-	position.y = (int)floor((Engine::Properties.Height/2)-(dimensions.y/2));
 }
 
 void Player::Initialize()
@@ -26,28 +23,28 @@ void Player::Tick(float DeltaTime)
 	Vector2 BackgroundDimensions = Renderer->TexSizeRepository["Background"];
 	if(position.x <= dimensions.x/2)
 	{
-		velocity.x *= -1.0f * DeltaTime;
+		velocity.x *= -1.2f * DeltaTime;
 		if(velocity.x < 0)
 			velocity.x = 1.5f;
 		OnCollision();
 	}
 	else if(position.x >= BackgroundDimensions.x - dimensions.x/2)
 	{
-		velocity.x *= -1.0f * DeltaTime;
+		velocity.x *= -1.2f * DeltaTime;
 		if(velocity.x > 0)
 			velocity.x = -1.5f;
 		OnCollision();
 	}
 	if(position.y <= dimensions.y/2)
 	{
-		velocity.y *= -1.0f * DeltaTime;
+		velocity.y *= -1.2f * DeltaTime;
 		if(velocity.y < 0)
 			velocity.y = 1.5f;
 		OnCollision();
 	}
 	else if(position.y >= BackgroundDimensions.y - dimensions.y/2)
 	{
-		velocity.y *= -1.0f * DeltaTime;
+		velocity.y *= -1.2f * DeltaTime;
 		if(velocity.y > 0)
 			velocity.y = -1.5f;
 		OnCollision();
@@ -97,15 +94,13 @@ void Player::Render()
 	Super::Render();
 
 	///TODO: Sort out the position of this.
-	Renderer->RenderFont("I am a man", "ArialSmall", position.ToInteger()-Vector2(0, 10), {0, 0, 0});
+	Renderer->RenderFont("I am a man", "ArialSmall", position+Vector2f(-20, 70), {0, 0, 0});
 }
 
 
 void Player::DefaultProperties()
 {
 	Super::DefaultProperties();
-	Vector2f CentrePosition = Vector2f(Engine::Properties.Width/2, Engine::Properties.Height/2);
-	position = Renderer->LocalToWorldVector(CentrePosition.ToInteger());
 
 	velocity = Vector2f(0, 0);
 

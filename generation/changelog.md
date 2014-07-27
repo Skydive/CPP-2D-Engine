@@ -59,4 +59,10 @@
   - Iterated through the game and made these changes to each Entity respectively.
   - Whoa! 5000 fps when holding left to remove the other entities. This sure is cool! I bet you don't get 5000 fps playing Call of Duty! Hah!
   - Updated Generation to include line numbers in the TODO list.
-  
+- 27-7-14
+  - Added AnimationSprite class (Work in progress)
+  - Fixed a linkedlist bug, where iterate would attempt to call the lambda function when h_node->x is a nullpointer and the linkedlist is empty.
+  - Did not commit. (Started updating OpenGL)
+- 27-7-14
+  - Version -> Alpha 0.065
+  - OpenGL renderer dealt with. It is now functional and set to default. (It can be changed with one line of code. See: Engine::Initialize())

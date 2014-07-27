@@ -13,7 +13,6 @@ public:
 
 	std::string TexturePath;
     std::string Texture;
-
 	double scale;
 	double rotation;
 	SDL_RendererFlip flip;
